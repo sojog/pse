@@ -15,7 +15,7 @@
 #import "VideoSource.h"
 #import "PatternDetector.h"
 
-
+#import "UIView+Animations.h"
 #import "UIImage+OpenCV.h"
 #import "ARView.h"
 
@@ -121,7 +121,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     // Pop-in the Tutorial Panel
     self.transitioningTracker = YES;
-//    [self.tutorialPanel slideIn:kAnimationDirectionFromTop completion:self.transitioningTrackerComplete];
+    [self.tutorialPanel slideIn:kAnimationDirectionFromTop completion:self.transitioningTrackerComplete];
     
     [super viewDidAppear:animated];
 }
@@ -149,7 +149,7 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return interfaceOrientation == UIInterfaceOrientationPortrait;
+    return interfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
 #pragma mark -
@@ -200,9 +200,9 @@
                                                         repeats:YES];
         
         __weak typeof(self) _weakSelf = self;
-//        [self.samplePanel popIn:^{
-//            _weakSelf.transitioningSample = NO;
-//        }];
+        [self.samplePanel popIn:^{
+            _weakSelf.transitioningSample = NO;
+        }];
     }
 }
 
@@ -215,9 +215,9 @@
         m_sampleTimer = nil;
         
         __weak typeof(self) _weakSelf = self;
-//        [self.samplePanel popOut:^{
-//            _weakSelf.transitioningSample = NO;
-//        }];
+        [self.samplePanel popOut:^{
+            _weakSelf.transitioningSample = NO;
+        }];
     }
 }
 
@@ -304,23 +304,23 @@
         self.transitioningTracker = YES;
         if ( [self isTutorialPanelVisible] ) {
             // Adjust panels
-//            [self.tutorialPanel slideOut:kAnimationDirectionFromTop
-//                              completion:self.transitioningTrackerComplete];
-//            [self.scorePanel    slideIn:kAnimationDirectionFromTop
-//                             completion:self.transitioningTrackerComplete];
-//            [self.triggerPanel  slideIn:kAnimationDirectionFromBottom
-//                             completion:self.transitioningTrackerComplete];
+            [self.tutorialPanel slideOut:kAnimationDirectionFromTop
+                              completion:self.transitioningTrackerComplete];
+            [self.scorePanel    slideIn:kAnimationDirectionFromTop
+                             completion:self.transitioningTrackerComplete];
+            [self.triggerPanel  slideIn:kAnimationDirectionFromBottom
+                             completion:self.transitioningTrackerComplete];
             
             // Play sound
             AudioServicesPlaySystemSound(m_soundTracking);
         } else {
             // Adjust panels
-//            [self.tutorialPanel slideIn:kAnimationDirectionFromTop
-//                             completion:self.transitioningTrackerComplete];
-//            [self.scorePanel    slideOut:kAnimationDirectionFromTop
-//                              completion:self.transitioningTrackerCompleteResetScore];
-//            [self.triggerPanel  slideOut:kAnimationDirectionFromBottom
-//                              completion:self.transitioningTrackerComplete];
+            [self.tutorialPanel slideIn:kAnimationDirectionFromTop
+                             completion:self.transitioningTrackerComplete];
+            [self.scorePanel    slideOut:kAnimationDirectionFromTop
+                              completion:self.transitioningTrackerCompleteResetScore];
+            [self.triggerPanel  slideOut:kAnimationDirectionFromBottom
+                              completion:self.transitioningTrackerComplete];
         }
     }
 }

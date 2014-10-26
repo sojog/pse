@@ -37,10 +37,6 @@
 		86D9E3A1185D36E700B31210 /* explosion.caf in Resources */ = {isa = PBXBuildFile; fileRef = 86D9E38E185D36E700B31210 /* explosion.caf */; };
 		86D9E3A2185D36E700B31210 /* laser.caf in Resources */ = {isa = PBXBuildFile; fileRef = 86D9E38F185D36E700B31210 /* laser.caf */; };
 		86D9E3A3185D36E700B31210 /* powerup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 86D9E390185D36E700B31210 /* powerup.caf */; };
-		86D9E3A9185D3BD100B31210 /* AccelerationAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3A6185D3BD100B31210 /* AccelerationAnimation.m */; };
-		86D9E3AA185D3BD100B31210 /* Evaluate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3A8185D3BD100B31210 /* Evaluate.m */; };
-		86D9E3AD185D3C0C00B31210 /* UIView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3AC185D3C0C00B31210 /* UIView+Animations.m */; };
-		86D9E3B1185D3C8C00B31210 /* SpriteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3B0185D3C8C00B31210 /* SpriteLayer.m */; };
 		86D9E3BA185D412C00B31210 /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3B9185D412C00B31210 /* VideoSource.mm */; };
 		86D9E3BD185D4B2900B31210 /* PatternDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3BB185D4B2900B31210 /* PatternDetector.cpp */; };
 		86D9E3C0185D4B7100B31210 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 86D9E3BF185D4B7100B31210 /* UIImage+OpenCV.mm */; };
@@ -87,14 +83,6 @@
 		86D9E38E185D36E700B31210 /* explosion.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.caf; sourceTree = "<group>"; };
 		86D9E38F185D36E700B31210 /* laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laser.caf; sourceTree = "<group>"; };
 		86D9E390185D36E700B31210 /* powerup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = powerup.caf; sourceTree = "<group>"; };
-		86D9E3A5185D3BD100B31210 /* AccelerationAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationAnimation.h; path = Animations/AccelerationAnimation.h; sourceTree = "<group>"; };
-		86D9E3A6185D3BD100B31210 /* AccelerationAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccelerationAnimation.m; path = Animations/AccelerationAnimation.m; sourceTree = "<group>"; };
-		86D9E3A7185D3BD100B31210 /* Evaluate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Evaluate.h; path = Animations/Evaluate.h; sourceTree = "<group>"; };
-		86D9E3A8185D3BD100B31210 /* Evaluate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Evaluate.m; path = Animations/Evaluate.m; sourceTree = "<group>"; };
-		86D9E3AB185D3C0C00B31210 /* UIView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Animations.h"; path = "Animations/UIView+Animations.h"; sourceTree = "<group>"; };
-		86D9E3AC185D3C0C00B31210 /* UIView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Animations.m"; path = "Animations/UIView+Animations.m"; sourceTree = "<group>"; };
-		86D9E3AF185D3C8C00B31210 /* SpriteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteLayer.h; path = Sprites/SpriteLayer.h; sourceTree = "<group>"; };
-		86D9E3B0185D3C8C00B31210 /* SpriteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteLayer.m; path = Sprites/SpriteLayer.m; sourceTree = "<group>"; };
 		86D9E3B7185D40C000B31210 /* VideoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoFrame.h; path = "Video Source/VideoFrame.h"; sourceTree = "<group>"; };
 		86D9E3B8185D412C00B31210 /* VideoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoSource.h; path = "Video Source/VideoSource.h"; sourceTree = "<group>"; };
 		86D9E3B9185D412C00B31210 /* VideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VideoSource.mm; path = "Video Source/VideoSource.mm"; sourceTree = "<group>"; };
@@ -161,8 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				86D9E379185D36D600B31210 /* Multimedia */,
-				86D9E3A4185D3BC300B31210 /* Animations */,
-				86D9E3AE185D3C7200B31210 /* Sprites */,
 				86D9E3B4185D408A00B31210 /* Video Source */,
 				86D9E3B5185D409000B31210 /* Detector */,
 				86D9E3B6185D409600B31210 /* Visualization */,
@@ -252,28 +238,6 @@
 			);
 			name = Sounds;
 			path = Multimedia/Sounds;
-			sourceTree = "<group>";
-		};
-		86D9E3A4185D3BC300B31210 /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				86D9E3A5185D3BD100B31210 /* AccelerationAnimation.h */,
-				86D9E3A6185D3BD100B31210 /* AccelerationAnimation.m */,
-				86D9E3A7185D3BD100B31210 /* Evaluate.h */,
-				86D9E3A8185D3BD100B31210 /* Evaluate.m */,
-				86D9E3AB185D3C0C00B31210 /* UIView+Animations.h */,
-				86D9E3AC185D3C0C00B31210 /* UIView+Animations.m */,
-			);
-			name = Animations;
-			sourceTree = "<group>";
-		};
-		86D9E3AE185D3C7200B31210 /* Sprites */ = {
-			isa = PBXGroup;
-			children = (
-				86D9E3AF185D3C8C00B31210 /* SpriteLayer.h */,
-				86D9E3B0185D3C8C00B31210 /* SpriteLayer.m */,
-			);
-			name = Sprites;
 			sourceTree = "<group>";
 		};
 		86D9E3B4185D408A00B31210 /* Video Source */ = {
@@ -430,10 +394,6 @@
 				86D9E363185D35B000B31210 /* main.m in Sources */,
 				86D9E367185D35B000B31210 /* AppDelegate.m in Sources */,
 				86D9E373185D35B000B31210 /* ViewController.mm in Sources */,
-				86D9E3A9185D3BD100B31210 /* AccelerationAnimation.m in Sources */,
-				86D9E3AA185D3BD100B31210 /* Evaluate.m in Sources */,
-				86D9E3AD185D3C0C00B31210 /* UIView+Animations.m in Sources */,
-				86D9E3B1185D3C8C00B31210 /* SpriteLayer.m in Sources */,
 				86D9E3BA185D412C00B31210 /* VideoSource.mm in Sources */,
 				86D9E3BD185D4B2900B31210 /* PatternDetector.cpp in Sources */,
 				86D9E3C0185D4B7100B31210 /* UIImage+OpenCV.mm in Sources */,

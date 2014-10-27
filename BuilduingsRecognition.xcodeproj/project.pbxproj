@@ -19,7 +19,7 @@
 		F823FAF919FD3CE8005E053D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F823FAF719FD3CE8005E053D /* Main.storyboard */; };
 		F823FAFB19FD3CE8005E053D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F823FAFA19FD3CE8005E053D /* Images.xcassets */; };
 		F823FAFE19FD3CE8005E053D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F823FAFC19FD3CE8005E053D /* LaunchScreen.xib */; };
-		F823FB0A19FD3CE8005E053D /* BuildingsRecognitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F823FB0919FD3CE8005E053D /* BuildingsRecognitionTests.m */; };
+		F823FB0A19FD3CE8005E053D /* BuilduingsRecognitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */; };
 		F823FB1B19FD3F78005E053D /* UIImage+OpenCVConvertor.mm in Sources */ = {isa = PBXBuildFile; fileRef = F823FB1719FD3F78005E053D /* UIImage+OpenCVConvertor.mm */; };
 		F823FB1C19FD3F78005E053D /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = F823FB1A19FD3F78005E053D /* VideoSource.mm */; };
 		F823FB1E19FD3FC7005E053D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB1D19FD3FC7005E053D /* Accelerate.framework */; };
@@ -50,7 +50,7 @@
 		F810263919FDA8DF00B71EBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F810263A19FDA8DF00B71EBE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F810263B19FDA8DF00B71EBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F823FAE719FD3CE8005E053D /* BuildingsRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuildingsRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuilduingsRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F823FAEB19FD3CE8005E053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F823FAEC19FD3CE8005E053D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F823FAEE19FD3CE8005E053D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,9 +61,9 @@
 		F823FAF819FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F823FAFA19FD3CE8005E053D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F823FAFD19FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F823FB0319FD3CE8005E053D /* BuildingsRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildingsRecognitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuilduingsRecognitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F823FB0819FD3CE8005E053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F823FB0919FD3CE8005E053D /* BuildingsRecognitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuildingsRecognitionTests.m; sourceTree = "<group>"; };
+		F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuilduingsRecognitionTests.m; sourceTree = "<group>"; };
 		F823FB1419FD3F14005E053D /* BuildingsRecognition-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BuildingsRecognition-Prefix.pch"; sourceTree = "<group>"; };
 		F823FB1519FD3F78005E053D /* CameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibration.h; sourceTree = "<group>"; };
 		F823FB1619FD3F78005E053D /* UIImage+OpenCVConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCVConvertor.h"; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 		F823FADE19FD3CE8005E053D = {
 			isa = PBXGroup;
 			children = (
-				F823FAE919FD3CE8005E053D /* BuildingsRecognition */,
-				F823FB0619FD3CE8005E053D /* BuildingsRecognitionTests */,
+				F823FAE919FD3CE8005E053D /* BuilduingsRecognition */,
+				F823FB0619FD3CE8005E053D /* BuilduingsRecognitionTests */,
 				F823FAE819FD3CE8005E053D /* Products */,
 				D0E1F84A17E09AE0F98F8663 /* Pods */,
 				8B535080D1880D7E5AE10AEF /* Frameworks */,
@@ -163,13 +163,13 @@
 		F823FAE819FD3CE8005E053D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F823FAE719FD3CE8005E053D /* BuildingsRecognition.app */,
-				F823FB0319FD3CE8005E053D /* BuildingsRecognitionTests.xctest */,
+				F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */,
+				F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F823FAE919FD3CE8005E053D /* BuildingsRecognition */ = {
+		F823FAE919FD3CE8005E053D /* BuilduingsRecognition */ = {
 			isa = PBXGroup;
 			children = (
 				F823FAEE19FD3CE8005E053D /* AppDelegate.h */,
@@ -186,7 +186,7 @@
 				F823FAF119FD3CE8005E053D /* BuilduingsRecognition.xcdatamodeld */,
 				F823FAEA19FD3CE8005E053D /* Supporting Files */,
 			);
-			path = BuildingsRecognition;
+			path = BuilduingsRecognition;
 			sourceTree = "<group>";
 		};
 		F823FAEA19FD3CE8005E053D /* Supporting Files */ = {
@@ -202,13 +202,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F823FB0619FD3CE8005E053D /* BuildingsRecognitionTests */ = {
+		F823FB0619FD3CE8005E053D /* BuilduingsRecognitionTests */ = {
 			isa = PBXGroup;
 			children = (
-				F823FB0919FD3CE8005E053D /* BuildingsRecognitionTests.m */,
+				F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */,
 				F823FB0719FD3CE8005E053D /* Supporting Files */,
 			);
-			path = BuildingsRecognitionTests;
+			path = BuilduingsRecognitionTests;
 			sourceTree = "<group>";
 		};
 		F823FB0719FD3CE8005E053D /* Supporting Files */ = {
@@ -222,9 +222,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F823FAE619FD3CE8005E053D /* BuildingsRecognition */ = {
+		F823FAE619FD3CE8005E053D /* BuilduingsRecognition */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingsRecognition" */;
+			buildConfigurationList = F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognition" */;
 			buildPhases = (
 				09A91D2918AAA41C7334560A /* Check Pods Manifest.lock */,
 				F823FAE319FD3CE8005E053D /* Sources */,
@@ -236,14 +236,14 @@
 			);
 			dependencies = (
 			);
-			name = BuildingsRecognition;
+			name = BuilduingsRecognition;
 			productName = BuilduingsRecognition;
-			productReference = F823FAE719FD3CE8005E053D /* BuildingsRecognition.app */;
+			productReference = F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F823FB0219FD3CE8005E053D /* BuildingsRecognitionTests */ = {
+		F823FB0219FD3CE8005E053D /* BuilduingsRecognitionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingsRecognitionTests" */;
+			buildConfigurationList = F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognitionTests" */;
 			buildPhases = (
 				F823FAFF19FD3CE8005E053D /* Sources */,
 				F823FB0019FD3CE8005E053D /* Frameworks */,
@@ -254,9 +254,9 @@
 			dependencies = (
 				F823FB0519FD3CE8005E053D /* PBXTargetDependency */,
 			);
-			name = BuildingsRecognitionTests;
+			name = BuilduingsRecognitionTests;
 			productName = BuilduingsRecognitionTests;
-			productReference = F823FB0319FD3CE8005E053D /* BuildingsRecognitionTests.xctest */;
+			productReference = F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -278,7 +278,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuildingsRecognition" */;
+			buildConfigurationList = F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuilduingsRecognition" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -291,8 +291,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F823FAE619FD3CE8005E053D /* BuildingsRecognition */,
-				F823FB0219FD3CE8005E053D /* BuildingsRecognitionTests */,
+				F823FAE619FD3CE8005E053D /* BuilduingsRecognition */,
+				F823FB0219FD3CE8005E053D /* BuilduingsRecognitionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -373,7 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F823FB0A19FD3CE8005E053D /* BuildingsRecognitionTests.m in Sources */,
+				F823FB0A19FD3CE8005E053D /* BuilduingsRecognitionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +382,7 @@
 /* Begin PBXTargetDependency section */
 		F823FB0519FD3CE8005E053D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F823FAE619FD3CE8005E053D /* BuildingsRecognition */;
+			target = F823FAE619FD3CE8005E053D /* BuilduingsRecognition */;
 			targetProxy = F823FB0419FD3CE8005E053D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -500,7 +500,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = BuildingsRecognition;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
 			};
 			name = Debug;
@@ -519,7 +519,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = BuildingsRecognition;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
 			};
 			name = Release;
@@ -538,7 +538,7 @@
 				);
 				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BuildingsRecognitionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
 			};
 			name = Debug;
@@ -553,7 +553,7 @@
 				);
 				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = BuildingsRecognitionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
 			};
 			name = Release;
@@ -561,7 +561,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuildingsRecognition" */ = {
+		F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuilduingsRecognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB0B19FD3CE8005E053D /* Debug */,
@@ -570,7 +570,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingsRecognition" */ = {
+		F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB0E19FD3CE8005E053D /* Debug */,
@@ -579,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingsRecognitionTests" */ = {
+		F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognitionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB1119FD3CE8005E053D /* Debug */,

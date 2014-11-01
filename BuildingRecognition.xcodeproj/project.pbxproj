@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C42355C2FFE1B3846184E004 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7E02F2187A8A4A3C73F6C4 /* libPods.a */; };
+		D2FE51C61A0521FD00C8CA3C /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FE51C41A0521FD00C8CA3C /* VideoViewController.m */; };
+		D2FE51C71A0521FD00C8CA3C /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FE51C51A0521FD00C8CA3C /* VideoViewController.xib */; };
 		F810263819FDA30300B71EBE /* PatternDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F810263619FDA30300B71EBE /* PatternDetector.cpp */; };
 		F810263C19FDA8DF00B71EBE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F810263919FDA8DF00B71EBE /* Default.png */; };
 		F810263D19FDA8DF00B71EBE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F810263A19FDA8DF00B71EBE /* Default@2x.png */; };
@@ -45,6 +47,9 @@
 		2706273F269AF7A62182EEDA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E7E02F2187A8A4A3C73F6C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD6BD87000765FC51874BB2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D2FE51C31A0521FD00C8CA3C /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		D2FE51C41A0521FD00C8CA3C /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		D2FE51C51A0521FD00C8CA3C /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 		F810263619FDA30300B71EBE /* PatternDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PatternDetector.cpp; sourceTree = "<group>"; };
 		F810263719FDA30300B71EBE /* PatternDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternDetector.h; sourceTree = "<group>"; };
 		F810263919FDA8DF00B71EBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -134,6 +139,9 @@
 				F823FAF419FD3CE8005E053D /* CameraViewController.h */,
 				F823FAF519FD3CE8005E053D /* CameraViewController.mm */,
 				F823FB2B19FD40A7005E053D /* CameraViewController.xib */,
+				D2FE51C31A0521FD00C8CA3C /* VideoViewController.h */,
+				D2FE51C41A0521FD00C8CA3C /* VideoViewController.m */,
+				D2FE51C51A0521FD00C8CA3C /* VideoViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				F823FAFE19FD3CE8005E053D /* LaunchScreen.xib in Resources */,
 				F823FAFB19FD3CE8005E053D /* Images.xcassets in Resources */,
 				F810263E19FDA8DF00B71EBE /* Default-568h@2x.png in Resources */,
+				D2FE51C71A0521FD00C8CA3C /* VideoViewController.xib in Resources */,
 				F810263C19FDA8DF00B71EBE /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +374,7 @@
 				F823FAF619FD3CE8005E053D /* CameraViewController.mm in Sources */,
 				F823FB1B19FD3F78005E053D /* UIImage+OpenCVConvertor.mm in Sources */,
 				F823FB1C19FD3F78005E053D /* VideoSource.mm in Sources */,
+				D2FE51C61A0521FD00C8CA3C /* VideoViewController.m in Sources */,
 				F823FAED19FD3CE8005E053D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

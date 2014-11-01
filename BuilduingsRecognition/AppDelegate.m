@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CameraViewController.h"
+#import "VideoViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window =[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor=[UIColor whiteColor];
-    CameraViewController *rootViewController=[[CameraViewController alloc] initWithNibName:NSStringFromClass([CameraViewController class]) bundle:nil];
+    VideoViewController *rootViewController=[[VideoViewController alloc] initWithNibName:NSStringFromClass([VideoViewController class]) bundle:nil];
       self.navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     [self.navigationController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navigationController;

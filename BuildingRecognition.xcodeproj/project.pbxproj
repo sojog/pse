@@ -50,7 +50,7 @@
 		F810263919FDA8DF00B71EBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F810263A19FDA8DF00B71EBE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F810263B19FDA8DF00B71EBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuilduingsRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F823FAE719FD3CE8005E053D /* BuildingRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuildingRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F823FAEB19FD3CE8005E053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F823FAEC19FD3CE8005E053D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F823FAEE19FD3CE8005E053D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		F823FAF819FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F823FAFA19FD3CE8005E053D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F823FAFD19FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuilduingsRecognitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F823FB0319FD3CE8005E053D /* BuildingRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuildingRecognitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F823FB0819FD3CE8005E053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuilduingsRecognitionTests.m; sourceTree = "<group>"; };
 		F823FB1419FD3F14005E053D /* BuildingsRecognition-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BuildingsRecognition-Prefix.pch"; sourceTree = "<group>"; };
@@ -163,8 +163,8 @@
 		F823FAE819FD3CE8005E053D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */,
-				F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */,
+				F823FAE719FD3CE8005E053D /* BuildingRecognition.app */,
+				F823FB0319FD3CE8005E053D /* BuildingRecognitionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,9 +222,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F823FAE619FD3CE8005E053D /* BuilduingsRecognition */ = {
+		F823FAE619FD3CE8005E053D /* BuildingRecognition */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognition" */;
+			buildConfigurationList = F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingRecognition" */;
 			buildPhases = (
 				09A91D2918AAA41C7334560A /* Check Pods Manifest.lock */,
 				F823FAE319FD3CE8005E053D /* Sources */,
@@ -236,14 +236,14 @@
 			);
 			dependencies = (
 			);
-			name = BuilduingsRecognition;
+			name = BuildingRecognition;
 			productName = BuilduingsRecognition;
-			productReference = F823FAE719FD3CE8005E053D /* BuilduingsRecognition.app */;
+			productReference = F823FAE719FD3CE8005E053D /* BuildingRecognition.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F823FB0219FD3CE8005E053D /* BuilduingsRecognitionTests */ = {
+		F823FB0219FD3CE8005E053D /* BuildingRecognitionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognitionTests" */;
+			buildConfigurationList = F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingRecognitionTests" */;
 			buildPhases = (
 				F823FAFF19FD3CE8005E053D /* Sources */,
 				F823FB0019FD3CE8005E053D /* Frameworks */,
@@ -254,9 +254,9 @@
 			dependencies = (
 				F823FB0519FD3CE8005E053D /* PBXTargetDependency */,
 			);
-			name = BuilduingsRecognitionTests;
+			name = BuildingRecognitionTests;
 			productName = BuilduingsRecognitionTests;
-			productReference = F823FB0319FD3CE8005E053D /* BuilduingsRecognitionTests.xctest */;
+			productReference = F823FB0319FD3CE8005E053D /* BuildingRecognitionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -278,7 +278,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuilduingsRecognition" */;
+			buildConfigurationList = F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuildingRecognition" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -291,8 +291,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F823FAE619FD3CE8005E053D /* BuilduingsRecognition */,
-				F823FB0219FD3CE8005E053D /* BuilduingsRecognitionTests */,
+				F823FAE619FD3CE8005E053D /* BuildingRecognition */,
+				F823FB0219FD3CE8005E053D /* BuildingRecognitionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -382,7 +382,7 @@
 /* Begin PBXTargetDependency section */
 		F823FB0519FD3CE8005E053D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F823FAE619FD3CE8005E053D /* BuilduingsRecognition */;
+			target = F823FAE619FD3CE8005E053D /* BuildingRecognition */;
 			targetProxy = F823FB0419FD3CE8005E053D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -492,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Silviu Ojog (GZ82TFE5K6)";
-				GCC_PREFIX_HEADER = "BuilduingsRecognition/BuildingsRecognition-Prefix.pch";
+				GCC_PREFIX_HEADER = "BuilduingsRecognition/BuildingRecognition-Prefix.pch";
 				INFOPLIST_FILE = BuilduingsRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -500,7 +500,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BuildingRecognition;
 				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
 			};
 			name = Debug;
@@ -511,7 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PREFIX_HEADER = "BuilduingsRecognition/BuildingsRecognition-Prefix.pch";
+				GCC_PREFIX_HEADER = "BuilduingsRecognition/BuildingRecognition-Prefix.pch";
 				INFOPLIST_FILE = BuilduingsRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -519,7 +519,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BuildingRecognition;
 				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
 			};
 			name = Release;
@@ -538,7 +538,7 @@
 				);
 				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BuildingRecognitionTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
 			};
 			name = Debug;
@@ -553,7 +553,7 @@
 				);
 				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BuildingRecognitionTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
 			};
 			name = Release;
@@ -561,7 +561,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuilduingsRecognition" */ = {
+		F823FAE219FD3CE8005E053D /* Build configuration list for PBXProject "BuildingRecognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB0B19FD3CE8005E053D /* Debug */,
@@ -570,7 +570,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognition" */ = {
+		F823FB0D19FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingRecognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB0E19FD3CE8005E053D /* Debug */,
@@ -579,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuilduingsRecognitionTests" */ = {
+		F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "BuildingRecognitionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F823FB1119FD3CE8005E053D /* Debug */,

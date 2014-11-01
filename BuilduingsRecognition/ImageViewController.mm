@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Silviu Ojog. All rights reserved.
 //
 
-#import "VideoViewController.h"
+#import "ImageViewController.h"
 
-@interface VideoViewController () {
+@interface ImageViewController () {
 }
 
 @end
 
-@implementation VideoViewController
+@implementation ImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,10 +45,10 @@
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    // TODO(sghiaus): Read and store the video. Also make sure it's a video and
-    // not a photo.
-    
+
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }

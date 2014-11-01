@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VideoViewController : UIViewController<UIImagePickerControllerDelegate,
+@interface ImageViewController : UIViewController<UIImagePickerControllerDelegate,
     UINavigationControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

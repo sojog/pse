@@ -1,5 +1,7 @@
 .DS_Store
 .swp
+*.swp
+*.pyc
 *~.nib
 build/
 DerivedData/

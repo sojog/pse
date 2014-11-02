@@ -1,4 +1,4 @@
-# Django settings for webservice project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -6,6 +6,9 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+SETTINGS_PATH = os.path.dirname(os.path.realpath(__file__))
+DETECTOR_PATH = '%s/../../detector/detector.py' % SETTINGS_PATH
 
 MANAGERS = ADMINS
 
@@ -124,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'detection',
+    'detection_app',
 )
 
 # A sample logging configuration. The only tangible logging

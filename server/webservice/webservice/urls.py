@@ -5,13 +5,17 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'webservice.views.home', name='home'),
-    # url(r'^webservice/', include('webservice.foo.urls')),
+    # Identifies the painting in the given image, at the target (x, y) location.
+    # GET parameters:
+    #   image: a file containing the image.
+    #   x: pixel location on the x axis (pointing rightward)
+    #   y: pixel location on the y axis (pointing downward)
+    # Reponse:
+    #   TODO(sghiaus): Decide response format. JSON? Protobuffers?
+    # TODO(sghiaus): Decide which format the image should be in (.png?).
+    url(r'^identify_painting/', 'detection_app.views.identify_painting'),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
+    # Django admin URLs.
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

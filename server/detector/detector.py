@@ -1,5 +1,11 @@
 import cv2
 
+# Returns a JSON file that contains information about the painting,
+# or None if the painting can't be identified.
+def detect_painting(image, x, y):
+    # TODO(sghiaus): Implement the function.
+    return ''
+
 MIN_MATCH_COUNT = 10
 
 def detect_painting_by_features(image_path, template_paths):

@@ -31,8 +31,12 @@ def _match(image_path, template_paths, matcher):
 
         template_kp, template_des = orb.detectAndCompute(template, None)
         matches = matcher.knnMatch(image_des, template_des, k = 2)
-
-        good = [m[0] for m in matches if len(m) == 2 and m[0].distance < m[1].distance * 0.75]
+        
+        good = []
+        for match in matches:
+            assert(len(match) == 2)
+            if match[0].distance < match[1].distance * 0.75:
+                good.append(match)
 
         score = len(good)
         if score > best_candidate_score and score > MIN_MATCH_COUNT:

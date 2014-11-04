@@ -1,7 +1,6 @@
+import features
 import unittest
 
-from features import _brute_force_match
-from features import _flann_match
 from features import match_features_with_best_template
 
 class TestPaintingBinaryChoice(unittest.TestCase):
@@ -16,19 +15,19 @@ class TestPaintingBinaryChoice(unittest.TestCase):
                           self.starry_night_template]
 
     def test_flann_selects_mona_lisa(self):
-        template = _flann_match(self.mona_lisa_image, self.templates)
+        template = match_features_with_best_template(self.mona_lisa_image, self.templates, features.FLANN)
         self.assertEqual(self.mona_lisa_template, template)
 
     def test_flann_selects_starry_night(self):
-        template = _flann_match(self.starry_night_image, self.templates)
+        template = match_features_with_best_template(self.starry_night_image, self.templates, features.FLANN)
         self.assertEqual(self.starry_night_template, template)
 
     def test_bf_selects_mona_lisa(self):
-        template = _brute_force_match(self.mona_lisa_image, self.templates)
+        template = match_features_with_best_template(self.mona_lisa_image, self.templates, features.BF)
         self.assertEqual(self.mona_lisa_template, template)
 
     def test_bf_selects_starry_night(self):
-        template = _brute_force_match(self.starry_night_image, self.templates)
+        template = match_features_with_best_template(self.starry_night_image, self.templates, features.BF)
         self.assertEqual(self.starry_night_template, template)
 
 """

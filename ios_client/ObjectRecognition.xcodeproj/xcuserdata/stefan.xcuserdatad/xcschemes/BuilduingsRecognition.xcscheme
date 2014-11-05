@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F823FAE619FD3CE8005E053D"
-            BuildableName = "BuildingRecognition.app"
-            BlueprintName = "BuildingRecognition"
-            ReferencedContainer = "container:BuildingRecognition.xcodeproj">
+            BuildableName = "ObjectRecognition.app"
+            BlueprintName = "ObjectRecognition"
+            ReferencedContainer = "container:ObjectRecognition.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F823FAE619FD3CE8005E053D"
-            BuildableName = "BuildingRecognition.app"
-            BlueprintName = "BuildingRecognition"
-            ReferencedContainer = "container:BuildingRecognition.xcodeproj">
+            BuildableName = "ObjectRecognition.app"
+            BlueprintName = "ObjectRecognition"
+            ReferencedContainer = "container:ObjectRecognition.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

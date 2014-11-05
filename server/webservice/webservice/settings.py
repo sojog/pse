@@ -8,7 +8,7 @@ ADMINS = (
 )
 
 SETTINGS_PATH = os.path.dirname(os.path.realpath(__file__))
-DETECTOR_PATH = '%s/../../detector/detector.py' % SETTINGS_PATH
+DETECTOR_PATH = '%s/../../detector/detector' % SETTINGS_PATH
 
 MANAGERS = ADMINS
 

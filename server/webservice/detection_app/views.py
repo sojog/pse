@@ -1,9 +1,7 @@
-import imp
+import subprocess
 
 from django.http import HttpResponse, HttpResponseServerError, HttpResponseForbidden
 from webservice.settings import DETECTOR_PATH
-
-detector = imp.load_source('detector', DETECTOR_PATH)
 
 def identify_painting(request):
     if request.method != 'GET':
@@ -24,9 +22,9 @@ def identify_painting(request):
     else:
         return HttpResponseServerError('Parameter \'y\' missing from request.')
 
-    contents = detector.detect_painting(image, x, y)
-    # TODO(sghiaus): Should we return something different when no painting is detected?
-    response = HttpResponse(contents)
-    response['Content-Length'] = len(contents)
+    content = subprocess.check_output([DETECTOR_PATH])
+
+    response = HttpResponse(content)
+    response['Content-Length'] = len(content)
 
     return response

@@ -1,10 +1,13 @@
 PODS:
+  - ECSlidingViewController (1.3.3)
   - OpenCV (2.4.9.1)
 
 DEPENDENCIES:
+  - ECSlidingViewController (~> 1.3.3)
   - OpenCV
 
 SPEC CHECKSUMS:
+  ECSlidingViewController: d69dbb4b70571310672f1ef508a8c8b7c26147c2
   OpenCV: 4190ad68e79e1b9ae7ac53d749e96e8c05041e45
 
 COCOAPODS: 0.34.4

@@ -31,6 +31,11 @@
 		F823FB2619FD3FFA005E053D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB2519FD3FFA005E053D /* Foundation.framework */; };
 		F823FB2819FD4005005E053D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB2719FD4005005E053D /* UIKit.framework */; };
 		F823FB2C19FD40A7005E053D /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F823FB2B19FD40A7005E053D /* CameraViewController.xib */; };
+		F8B7B7C61A0AA0EB00F2B8CB /* FINavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */; };
+		F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */; };
+		F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */; };
+		F8B7B7C91A0AA0EB00F2B8CB /* SMSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C51A0AA0EB00F2B8CB /* SMSlidingViewController.m */; };
+		F8B7B7CD1A0AA2CD00F2B8CB /* CameraPreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7CC1A0AA2CD00F2B8CB /* CameraPreViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,17 @@
 		F823FB2519FD3FFA005E053D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F823FB2719FD4005005E053D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F823FB2B19FD40A7005E053D /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		F8B7B7BE1A0AA0EB00F2B8CB /* FINavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FINavigationViewController.h; sourceTree = "<group>"; };
+		F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FINavigationViewController.m; sourceTree = "<group>"; };
+		F8B7B7C01A0AA0EB00F2B8CB /* FISlidingMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISlidingMenuItem.h; sourceTree = "<group>"; };
+		F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISlidingMenuItem.m; sourceTree = "<group>"; };
+		F8B7B7C21A0AA0EB00F2B8CB /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		F8B7B7C41A0AA0EB00F2B8CB /* SMSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSlidingViewController.h; sourceTree = "<group>"; };
+		F8B7B7C51A0AA0EB00F2B8CB /* SMSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSlidingViewController.m; sourceTree = "<group>"; };
+		F8B7B7CA1A0AA25500F2B8CB /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		F8B7B7CB1A0AA2CD00F2B8CB /* CameraPreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPreViewController.h; sourceTree = "<group>"; };
+		F8B7B7CC1A0AA2CD00F2B8CB /* CameraPreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +200,7 @@
 				F823FAEF19FD3CE8005E053D /* AppDelegate.m */,
 				F810263419FD9F0B00B71EBE /* ViewControllers */,
 				F823FB1519FD3F78005E053D /* CameraCalibration.h */,
+				F8B7B7BD1A0AA0CD00F2B8CB /* SlidingMenu */,
 				F810263519FDA2F300B71EBE /* Detector */,
 				F823FB1819FD3F78005E053D /* VideoFrame.h */,
 				F823FB1919FD3F78005E053D /* VideoSource.h */,
@@ -200,6 +217,7 @@
 		F823FAEA19FD3CE8005E053D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8B7B7CA1A0AA25500F2B8CB /* Globals.h */,
 				F810263919FDA8DF00B71EBE /* Default.png */,
 				F810263A19FDA8DF00B71EBE /* Default@2x.png */,
 				F810263B19FDA8DF00B71EBE /* Default-568h@2x.png */,
@@ -225,6 +243,23 @@
 				F823FB0819FD3CE8005E053D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8B7B7BD1A0AA0CD00F2B8CB /* SlidingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F8B7B7CB1A0AA2CD00F2B8CB /* CameraPreViewController.h */,
+				F8B7B7CC1A0AA2CD00F2B8CB /* CameraPreViewController.m */,
+				F8B7B7BE1A0AA0EB00F2B8CB /* FINavigationViewController.h */,
+				F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */,
+				F8B7B7C01A0AA0EB00F2B8CB /* FISlidingMenuItem.h */,
+				F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */,
+				F8B7B7C21A0AA0EB00F2B8CB /* MenuViewController.h */,
+				F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */,
+				F8B7B7C41A0AA0EB00F2B8CB /* SMSlidingViewController.h */,
+				F8B7B7C51A0AA0EB00F2B8CB /* SMSlidingViewController.m */,
+			);
+			name = SlidingMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,13 +403,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B7B7CD1A0AA2CD00F2B8CB /* CameraPreViewController.m in Sources */,
 				F823FAF019FD3CE8005E053D /* AppDelegate.m in Sources */,
 				F810263819FDA30300B71EBE /* PatternDetector.cpp in Sources */,
 				F823FAF319FD3CE8005E053D /* BuilduingsRecognition.xcdatamodeld in Sources */,
+				F8B7B7C61A0AA0EB00F2B8CB /* FINavigationViewController.m in Sources */,
 				F823FAF619FD3CE8005E053D /* CameraViewController.mm in Sources */,
+				F8B7B7C91A0AA0EB00F2B8CB /* SMSlidingViewController.m in Sources */,
 				F823FB1B19FD3F78005E053D /* UIImage+OpenCVConvertor.mm in Sources */,
 				F823FB1C19FD3F78005E053D /* VideoSource.mm in Sources */,
+				F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */,
 				D2FE51C61A0521FD00C8CA3C /* ImageViewController.mm in Sources */,
+				F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */,
 				F823FAED19FD3CE8005E053D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

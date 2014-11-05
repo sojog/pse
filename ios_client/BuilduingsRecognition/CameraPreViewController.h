@@ -1,6 +1,6 @@
 //
 //  CameraPreViewController.h
-//  BuildingRecognition
+//  ObjectRecognition
 //
 //  Created by stefan on 11/4/14.
 //  Copyright (c) 2014 Silviu Ojog. All rights reserved.

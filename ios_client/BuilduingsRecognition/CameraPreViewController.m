@@ -8,10 +8,14 @@
 
 #import "CameraPreViewController.h"
 #import "MenuViewController.h"
+#import "PEHttpClient.h"
+#import "SearchPictureRequest.h"
+#import "SearchPictureResponse.h"
 
 
 @interface CameraPreViewController (){
-  int     cameraOrientation;
+    int     cameraOrientation;
+    AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer;
 }
 
 @end
@@ -35,7 +39,7 @@
         // Handle the failure.
     }
     
-    AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:avCaptureSession];
+    newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:avCaptureSession];
     
     [[self.view layer] setMasksToBounds:YES];
     [newCaptureVideoPreviewLayer setFrame:[self.view bounds]];
@@ -54,9 +58,16 @@
     [avCaptureSession startRunning];
     
     [self setCaptureSession:avCaptureSession];
+    
+    
     UISwipeGestureRecognizer *swipeGesture= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(revealMenu:)];
     [self.view addGestureRecognizer:swipeGesture];
     
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(requestPictureIdentification:)];
+    
+    [self.view addGestureRecognizer:singleFingerTap];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
@@ -90,6 +101,53 @@
     
 }
 
+#pragma mark - Services
+-(void)requestPictureIdentification:(UIGestureRecognizer*)recognizer{
+    
+    if ([recognizer state] == UIGestureRecognizerStateEnded) {
+        NSInteger nr= [recognizer numberOfTouches];
+        
+        CGPoint lastPoint= [recognizer locationOfTouch:nr-1 inView:self.view];
+        NSLog(@"last point %@", NSStringFromCGPoint(lastPoint));
+        NSString *xCoordinate = [NSString stringWithFormat:@"%f",2*lastPoint.x ];
+        NSString *yCoordinate = [NSString stringWithFormat:@"%f",2*lastPoint.y ];
+        
+        //        UIGraphicsBeginImageContext(appDelegate.window.bounds.size);
+        UIGraphicsBeginImageContext(self.view.bounds.size);
+        
+        [newCaptureVideoPreviewLayer.presentationLayer renderInContext:UIGraphicsGetCurrentContext()];
+        
+        
+        //    [appDelegate.window.layer renderInContext:UIGraphicsGetCurrentContext()];
+        
+        UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        NSLog(@"%@ image", screenshot);
+        
+        if (screenshot) {
+//            [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.0.11:8000/" Request:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate]  andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+//               
+//                NSLog(@"response ..%@",response);
+//                NSLog(@"error ..%@", error);
+//            }];
+            
+            [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+                NSLog(@"response ..%@",response);
+                NSLog(@"error ..%@", error);
+            }];
+        }
+        [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+            
+        }];
+        
+        
+        
+    }
+    
+}
+
++ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+}
 
 #pragma mark -
 #pragma mark Device Orientation

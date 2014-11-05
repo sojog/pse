@@ -8,7 +8,7 @@ from webservice.settings import DETECTOR_PATH
 # TODO(sghiaus): Use Django forms to manage the upload.
 def identify_painting(request):
     if request.method != 'POST':
-        return log_bad_request_and_return(request, 'request is not POST')
+        return HttpResponseServerError(request, 'request is not POST')
 
     if 'image' in request.FILES:
         image = request.FILES['image']
@@ -36,7 +36,6 @@ def identify_painting(request):
     database_path = "../detector/data"
     abs_database_path = os.path.abspath(database_path)
     content = subprocess.check_output([DETECTOR_PATH, abs_image_path, abs_database_path])
-
 
     response = HttpResponse(content)
     response['Content-Length'] = len(content)

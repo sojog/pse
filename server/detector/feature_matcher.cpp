@@ -15,6 +15,7 @@ using namespace std;
 // Alternatively, pass all the templates in a vector and let the feature matcher
 // pick the best one. This allows for caching.
 // TODO(sghiaus): Also scale down the images so the computation is faster.
+// TODO(sghiaus): Template features can be precomputed.
 int ComputeFeatureMatchScore(const string& reference_image_path,
                              const string& template_path) {
     Mat reference_image = imread(reference_image_path, CV_LOAD_IMAGE_GRAYSCALE);

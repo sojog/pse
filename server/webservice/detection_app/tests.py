@@ -6,11 +6,14 @@ class SimpleTest(TestCase):
         self.client = Client()
         
     def test_empty_painting_detection(self):
-        response = self.client.get('/identify_painting/', {
-            'image': '',
+        # TODO(sghiaus): Make this path relative to the current file's location.
+        starry_night = open("detection_app/testdata/StarryNightPhoto.png", "rb")
+        response = self.client.post('/identify_painting/', {
+            'image': starry_night,
             'x': '0',
             'y': '0',
         })
         self.assertEqual(200, response.status_code)        
-        self.assertEqual("", response.content)
+
+        # TODO(sghiaus): Also verify the result content.
 

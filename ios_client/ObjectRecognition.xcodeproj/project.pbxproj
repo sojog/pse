@@ -31,6 +31,9 @@
 		F823FB2619FD3FFA005E053D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB2519FD3FFA005E053D /* Foundation.framework */; };
 		F823FB2819FD4005005E053D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB2719FD4005005E053D /* UIKit.framework */; };
 		F823FB2C19FD40A7005E053D /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F823FB2B19FD40A7005E053D /* CameraViewController.xib */; };
+		F83621161A0AC80D00BEDCE2 /* SearchPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F83621131A0AC80D00BEDCE2 /* SearchPictureRequest.m */; };
+		F83621171A0AC80D00BEDCE2 /* SearchPictureResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F83621151A0AC80D00BEDCE2 /* SearchPictureResponse.m */; };
+		F836211B1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m in Sources */ = {isa = PBXBuildFile; fileRef = F836211A1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m */; };
 		F8B7B7C61A0AA0EB00F2B8CB /* FINavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */; };
 		F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */; };
 		F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */; };
@@ -91,6 +94,12 @@
 		F823FB2519FD3FFA005E053D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F823FB2719FD4005005E053D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F823FB2B19FD40A7005E053D /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		F83621121A0AC80D00BEDCE2 /* SearchPictureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPictureRequest.h; sourceTree = "<group>"; };
+		F83621131A0AC80D00BEDCE2 /* SearchPictureRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPictureRequest.m; sourceTree = "<group>"; };
+		F83621141A0AC80D00BEDCE2 /* SearchPictureResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPictureResponse.h; sourceTree = "<group>"; };
+		F83621151A0AC80D00BEDCE2 /* SearchPictureResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPictureResponse.m; sourceTree = "<group>"; };
+		F83621191A0AC86B00BEDCE2 /* NSDictionary+SafeNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeNull.h"; sourceTree = "<group>"; };
+		F836211A1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeNull.m"; sourceTree = "<group>"; };
 		F8B7B7BE1A0AA0EB00F2B8CB /* FINavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FINavigationViewController.h; sourceTree = "<group>"; };
 		F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FINavigationViewController.m; sourceTree = "<group>"; };
 		F8B7B7C01A0AA0EB00F2B8CB /* FISlidingMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISlidingMenuItem.h; sourceTree = "<group>"; };
@@ -208,6 +217,7 @@
 			children = (
 				F823FAEE19FD3CE8005E053D /* AppDelegate.h */,
 				F823FAEF19FD3CE8005E053D /* AppDelegate.m */,
+				F83621181A0AC85A00BEDCE2 /* Categories */,
 				F810263419FD9F0B00B71EBE /* ViewControllers */,
 				F823FB1519FD3F78005E053D /* CameraCalibration.h */,
 				F8B7B7CE1A0AA64E00F2B8CB /* Networking */,
@@ -256,6 +266,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F83621181A0AC85A00BEDCE2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F83621191A0AC86B00BEDCE2 /* NSDictionary+SafeNull.h */,
+				F836211A1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		F8B7B7BD1A0AA0CD00F2B8CB /* SlidingMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,28 +297,24 @@
 			children = (
 				F8B7B7D51A0AA6AB00F2B8CB /* PEHttpClient.h */,
 				F8B7B7D61A0AA6AB00F2B8CB /* PEHttpClient.m */,
-				F8B7B7D91A0AA98C00F2B8CB /* New Group1 */,
-				F8B7B7D81A0AA98800F2B8CB /* New Group */,
+				F83621121A0AC80D00BEDCE2 /* SearchPictureRequest.h */,
+				F83621131A0AC80D00BEDCE2 /* SearchPictureRequest.m */,
+				F83621141A0AC80D00BEDCE2 /* SearchPictureResponse.h */,
+				F83621151A0AC80D00BEDCE2 /* SearchPictureResponse.m */,
+				F8B7B7D81A0AA98800F2B8CB /* Base */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		F8B7B7D81A0AA98800F2B8CB /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				F8B7B7CF1A0AA69100F2B8CB /* PEBaseResponse.h */,
 				F8B7B7D01A0AA69100F2B8CB /* PEBaseResponse.m */,
 				F8B7B7D11A0AA69100F2B8CB /* PEBaseRequest.m */,
 				F8B7B7D21A0AA69100F2B8CB /* PEBaseRequest.h */,
 			);
-			name = Networking;
-			sourceTree = "<group>";
-		};
-		F8B7B7D81A0AA98800F2B8CB /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
-		F8B7B7D91A0AA98C00F2B8CB /* New Group1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group1";
+			name = Base;
 			sourceTree = "<group>";
 		};
 		F8B7B7DA1A0AA99500F2B8CB /* New Group */ = {
@@ -452,6 +467,8 @@
 			files = (
 				F8B7B7CD1A0AA2CD00F2B8CB /* CameraPreViewController.m in Sources */,
 				F823FAF019FD3CE8005E053D /* AppDelegate.m in Sources */,
+				F83621161A0AC80D00BEDCE2 /* SearchPictureRequest.m in Sources */,
+				F836211B1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m in Sources */,
 				F810263819FDA30300B71EBE /* PatternDetector.cpp in Sources */,
 				F823FAF319FD3CE8005E053D /* BuilduingsRecognition.xcdatamodeld in Sources */,
 				F8B7B7D31A0AA69100F2B8CB /* PEBaseResponse.m in Sources */,
@@ -464,6 +481,7 @@
 				F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */,
 				D2FE51C61A0521FD00C8CA3C /* ImageViewController.mm in Sources */,
 				F8B7B7D71A0AA6AB00F2B8CB /* PEHttpClient.m in Sources */,
+				F83621171A0AC80D00BEDCE2 /* SearchPictureResponse.m in Sources */,
 				F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */,
 				F823FAED19FD3CE8005E053D /* main.m in Sources */,
 			);

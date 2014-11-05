@@ -8,7 +8,7 @@ from webservice.settings import DETECTOR_PATH
 # TODO(sghiaus): Use Django forms to manage the upload.
 def identify_painting(request):
     if request.method != 'POST':
-        return HttpResponseServerError(request, 'request is not POST')
+        return HttpResponseServerError('Request is not POST')
 
     if 'image' in request.FILES:
         image = request.FILES['image']

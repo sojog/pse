@@ -15,10 +15,11 @@ using namespace std;
 int main(int argc, const char** argv) {
     assert(argc == 3);
     const char* reference_image = argv[1];
+    string database_path = argv[2];
 
     // Read the json database.
     fstream file_stream;
-    file_stream.open(argv[2], fstream::in);
+    file_stream.open(database_path + "/data.json", fstream::in);
     stringstream database;
     database << file_stream.rdbuf();
     file_stream.close();
@@ -31,7 +32,7 @@ int main(int argc, const char** argv) {
 
     for (SizeType i = 0; i < document.Size(); ++i) {
         Value& entry = document[i];
-        string template_path = entry["template"].GetString();
+        string template_path = database_path + "/" + entry["template"].GetString();
         int score = ComputeFeatureMatchScore(reference_image, template_path);
         if (score > best_score) {
             best_score = score;

@@ -14,11 +14,11 @@
 		<string>https://github.com/tomucu/pse.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BuilduingsRecognition.xcworkspace</string>
+	<string>ios_client/BuilduingsRecognition.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0967D09AA0C78B4029EEBB0697B9F112D6D22EAD</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/tomucu/pse.git</string>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>0967D09AA0C78B4029EEBB0697B9F112D6D22EAD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>builduing_recognition</string>
+			<string>ObjectRecognition</string>
 		</dict>
 	</array>
 </dict>

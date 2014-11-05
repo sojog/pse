@@ -4,7 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ECSlidingViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-OpenCV.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SBJson.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>38E54AB151ED88300A7730DD</key>
+		<key>5ED2F0A3BE7A2CCB0031D3FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3A1E4DE73A6D6FBA34A5FB67</key>
+		<key>8171320207F7207829733B89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A347F8062139BB27A4203926</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D74D1E985CCD1ED2CD14C9B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB4819BDCF4DAA547F19019F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

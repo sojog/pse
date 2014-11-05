@@ -17,12 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window =[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor=[UIColor whiteColor];
-    ImageViewController *rootViewController=[[ImageViewController alloc] initWithNibName:NSStringFromClass([ImageViewController class]) bundle:nil];
-      self.navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-    [self.navigationController setNavigationBarHidden:YES];
-    self.window.rootViewController = self.navigationController;
+   
     
     // Override point for customization after application launch.
     

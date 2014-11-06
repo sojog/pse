@@ -15,14 +15,15 @@ using namespace std;
 // Alternatively, pass all the templates in a vector and let the feature matcher
 // pick the best one. This allows for caching.
 // TODO(sghiaus): Also scale down the images so the computation is faster.
-// TODO(sghiaus): Template features can be precomputed.
+// TODO(sghiaus): Template features can be precomputed and reference image features
+// should only be computed once.
 int ComputeFeatureMatchScore(const string& reference_image_path,
                              const string& template_path) {
     Mat reference_image = imread(reference_image_path, CV_LOAD_IMAGE_GRAYSCALE);
     Mat template_image = imread(template_path, CV_LOAD_IMAGE_GRAYSCALE);
 
     if (!reference_image.data || !template_image.data) {
-        cout << "Error loading images: " << reference_image_path << " || " <<
+        cerr << "Error loading images: " << reference_image_path << " || " <<
             template_path;
         return 0;
     }
@@ -59,7 +60,7 @@ int ComputeFeatureMatchScore(const string& reference_image_path,
     vector<DMatch> good_matches;
 
     for (int i = 0; i < reference_des.rows; i++) {
-        if (matches[i].distance <= max(2*min_dist, 0.02)) {
+        if (matches[i].distance <= max(2 * min_dist, 0.02)) {
             good_matches.push_back(matches[i]);
         }
     }

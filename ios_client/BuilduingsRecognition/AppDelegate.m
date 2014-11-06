@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ImageViewController.h"
+
 
 @interface AppDelegate ()
 

@@ -11,7 +11,7 @@
 
 @interface SearchPictureRequest : PEBaseRequest
 
-@property (strong, nonatomic) NSString *picture;
+@property (strong, nonatomic) NSData *picture;
 @property (strong, nonatomic) NSString *xCoordinate;
 @property (strong, nonatomic) NSString *yCoordinate;
 

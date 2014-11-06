@@ -30,6 +30,11 @@
 		F83621161A0AC80D00BEDCE2 /* SearchPictureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F83621131A0AC80D00BEDCE2 /* SearchPictureRequest.m */; };
 		F83621171A0AC80D00BEDCE2 /* SearchPictureResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F83621151A0AC80D00BEDCE2 /* SearchPictureResponse.m */; };
 		F836211B1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m in Sources */ = {isa = PBXBuildFile; fileRef = F836211A1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m */; };
+		F836211D1A0AE13600BEDCE2 /* MonaLisaTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F836211C1A0AE13600BEDCE2 /* MonaLisaTemplate.png */; };
+		F89F01201A0B400F0028D14F /* InsertionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F89F011E1A0B400F0028D14F /* InsertionTableViewCell.m */; };
+		F89F01211A0B400F0028D14F /* InsertionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89F011F1A0B400F0028D14F /* InsertionTableViewCell.xib */; };
+		F89F01241A0B41820028D14F /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F89F01231A0B41820028D14F /* BaseTableViewCell.m */; };
+		F89F01271A0B4A1A0028D14F /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89F01261A0B4A1A0028D14F /* DetailsViewController.m */; };
 		F8B7B7C61A0AA0EB00F2B8CB /* FINavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */; };
 		F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */; };
 		F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */; };
@@ -90,6 +95,14 @@
 		F83621151A0AC80D00BEDCE2 /* SearchPictureResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPictureResponse.m; sourceTree = "<group>"; };
 		F83621191A0AC86B00BEDCE2 /* NSDictionary+SafeNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeNull.h"; sourceTree = "<group>"; };
 		F836211A1A0AC86B00BEDCE2 /* NSDictionary+SafeNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeNull.m"; sourceTree = "<group>"; };
+		F836211C1A0AE13600BEDCE2 /* MonaLisaTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MonaLisaTemplate.png; sourceTree = "<group>"; };
+		F89F011D1A0B400F0028D14F /* InsertionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertionTableViewCell.h; sourceTree = "<group>"; };
+		F89F011E1A0B400F0028D14F /* InsertionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertionTableViewCell.m; sourceTree = "<group>"; };
+		F89F011F1A0B400F0028D14F /* InsertionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InsertionTableViewCell.xib; sourceTree = "<group>"; };
+		F89F01221A0B41820028D14F /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		F89F01231A0B41820028D14F /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		F89F01251A0B4A1A0028D14F /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		F89F01261A0B4A1A0028D14F /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		F8B7B7BE1A0AA0EB00F2B8CB /* FINavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FINavigationViewController.h; sourceTree = "<group>"; };
 		F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FINavigationViewController.m; sourceTree = "<group>"; };
 		F8B7B7C01A0AA0EB00F2B8CB /* FISlidingMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISlidingMenuItem.h; sourceTree = "<group>"; };
@@ -157,13 +170,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F810263419FD9F0B00B71EBE /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 		F810263519FDA2F300B71EBE /* Detector */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +208,6 @@
 				F823FAEE19FD3CE8005E053D /* AppDelegate.h */,
 				F823FAEF19FD3CE8005E053D /* AppDelegate.m */,
 				F83621181A0AC85A00BEDCE2 /* Categories */,
-				F810263419FD9F0B00B71EBE /* ViewControllers */,
 				F823FB1519FD3F78005E053D /* CameraCalibration.h */,
 				F8B7B7CE1A0AA64E00F2B8CB /* Networking */,
 				F8B7B7BD1A0AA0CD00F2B8CB /* SlidingMenu */,
@@ -212,6 +217,7 @@
 				F823FB1A19FD3F78005E053D /* VideoSource.mm */,
 				F823FAF719FD3CE8005E053D /* Main.storyboard */,
 				F823FAFA19FD3CE8005E053D /* Images.xcassets */,
+				F836211C1A0AE13600BEDCE2 /* MonaLisaTemplate.png */,
 				F823FAFC19FD3CE8005E053D /* LaunchScreen.xib */,
 				F823FAF119FD3CE8005E053D /* BuilduingsRecognition.xcdatamodeld */,
 				F823FAEA19FD3CE8005E053D /* Supporting Files */,
@@ -259,17 +265,32 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		F89F01281A0B505B0028D14F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F89F011D1A0B400F0028D14F /* InsertionTableViewCell.h */,
+				F89F011E1A0B400F0028D14F /* InsertionTableViewCell.m */,
+				F89F011F1A0B400F0028D14F /* InsertionTableViewCell.xib */,
+				F89F01221A0B41820028D14F /* BaseTableViewCell.h */,
+				F89F01231A0B41820028D14F /* BaseTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		F8B7B7BD1A0AA0CD00F2B8CB /* SlidingMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F89F01281A0B505B0028D14F /* Cells */,
 				F8B7B7CB1A0AA2CD00F2B8CB /* CameraPreViewController.h */,
 				F8B7B7CC1A0AA2CD00F2B8CB /* CameraPreViewController.m */,
+				F89F01251A0B4A1A0028D14F /* DetailsViewController.h */,
+				F89F01261A0B4A1A0028D14F /* DetailsViewController.m */,
+				F8B7B7C21A0AA0EB00F2B8CB /* MenuViewController.h */,
+				F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */,
 				F8B7B7BE1A0AA0EB00F2B8CB /* FINavigationViewController.h */,
 				F8B7B7BF1A0AA0EB00F2B8CB /* FINavigationViewController.m */,
 				F8B7B7C01A0AA0EB00F2B8CB /* FISlidingMenuItem.h */,
 				F8B7B7C11A0AA0EB00F2B8CB /* FISlidingMenuItem.m */,
-				F8B7B7C21A0AA0EB00F2B8CB /* MenuViewController.h */,
-				F8B7B7C31A0AA0EB00F2B8CB /* MenuViewController.m */,
 				F8B7B7C41A0AA0EB00F2B8CB /* SMSlidingViewController.h */,
 				F8B7B7C51A0AA0EB00F2B8CB /* SMSlidingViewController.m */,
 			);
@@ -391,6 +412,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F836211D1A0AE13600BEDCE2 /* MonaLisaTemplate.png in Resources */,
+				F89F01211A0B400F0028D14F /* InsertionTableViewCell.xib in Resources */,
 				F810263D19FDA8DF00B71EBE /* Default@2x.png in Resources */,
 				F823FAF919FD3CE8005E053D /* Main.storyboard in Resources */,
 				F823FAFE19FD3CE8005E053D /* LaunchScreen.xib in Resources */,
@@ -454,12 +477,15 @@
 				F810263819FDA30300B71EBE /* PatternDetector.cpp in Sources */,
 				F823FAF319FD3CE8005E053D /* BuilduingsRecognition.xcdatamodeld in Sources */,
 				F8B7B7D31A0AA69100F2B8CB /* PEBaseResponse.m in Sources */,
+				F89F01201A0B400F0028D14F /* InsertionTableViewCell.m in Sources */,
 				F8B7B7C61A0AA0EB00F2B8CB /* FINavigationViewController.m in Sources */,
 				F8B7B7C91A0AA0EB00F2B8CB /* SMSlidingViewController.m in Sources */,
 				F823FB1B19FD3F78005E053D /* UIImage+OpenCVConvertor.mm in Sources */,
+				F89F01271A0B4A1A0028D14F /* DetailsViewController.m in Sources */,
 				F8B7B7D41A0AA69100F2B8CB /* PEBaseRequest.m in Sources */,
 				F823FB1C19FD3F78005E053D /* VideoSource.mm in Sources */,
 				F8B7B7C71A0AA0EB00F2B8CB /* FISlidingMenuItem.m in Sources */,
+				F89F01241A0B41820028D14F /* BaseTableViewCell.m in Sources */,
 				F8B7B7D71A0AA6AB00F2B8CB /* PEHttpClient.m in Sources */,
 				F83621171A0AC80D00BEDCE2 /* SearchPictureResponse.m in Sources */,
 				F8B7B7C81A0AA0EB00F2B8CB /* MenuViewController.m in Sources */,

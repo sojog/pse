@@ -158,17 +158,17 @@
         
             //other test
             
-            if (screenshot) {
-                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
-                    [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
-                    NSLog(@"response ..%@",response);
-                    NSLog(@"error ..%@", error);
-                }];
-            }
+//            if (screenshot) {
+//                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+//                    [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
+//                    NSLog(@"response ..%@",response);
+//                    NSLog(@"error ..%@", error);
+//                }];
+//            }
+        
             
             
-            
-            
+             [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
        
 
         
@@ -219,7 +219,7 @@
         //testing
         detailsVC.image=[UIImage imageNamed:@"mona"];
         detailsVC.name=@"some text";
-        detailsVC.descriptionText=@"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
+        detailsVC.descriptionText=@"Mona Lisa (also known as La Gioconda or La Joconde) is a 16th-century portrait painted in oil by Leonardo da Vinci during the Renaissance in Florence, Italy. Many people think Mona Lisa's smile is mysterious.[1] It is so often studied, recognized, and copied that it is the most famous painting in the world.[2][3][4] The Louvre says that about 80 percent of its visitors come to see the painting of Mona Lisa.[4]";
         
        
         /*

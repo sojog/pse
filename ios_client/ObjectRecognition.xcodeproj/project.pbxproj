@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1830ACB41A0CD71F00ED32A9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830ACB31A0CD71F00ED32A9 /* AudioToolbox.framework */; };
+		1830ACBA1A0CD76100ED32A9 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1830ACB61A0CD76100ED32A9 /* AcousticModelEnglish.bundle */; };
+		1830ACBB1A0CD76100ED32A9 /* AcousticModelSpanish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1830ACB71A0CD76100ED32A9 /* AcousticModelSpanish.bundle */; };
+		1830ACBC1A0CD76100ED32A9 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830ACB81A0CD76100ED32A9 /* OpenEars.framework */; };
+		1830ACBD1A0CD76100ED32A9 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1830ACB91A0CD76100ED32A9 /* Slt.framework */; };
 		C42355C2FFE1B3846184E004 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7E02F2187A8A4A3C73F6C4 /* libPods.a */; };
 		F810263819FDA30300B71EBE /* PatternDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F810263619FDA30300B71EBE /* PatternDetector.cpp */; };
 		F810263C19FDA8DF00B71EBE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F810263919FDA8DF00B71EBE /* Default.png */; };
@@ -45,6 +50,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1830ACB31A0CD71F00ED32A9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1830ACB61A0CD76100ED32A9 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		1830ACB71A0CD76100ED32A9 /* AcousticModelSpanish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelSpanish.bundle; sourceTree = "<group>"; };
+		1830ACB81A0CD76100ED32A9 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		1830ACB91A0CD76100ED32A9 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		2706273F269AF7A62182EEDA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E7E02F2187A8A4A3C73F6C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD6BD87000765FC51874BB2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,22 +125,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1830ACBD1A0CD76100ED32A9 /* Slt.framework in Frameworks */,
+				1830ACB41A0CD71F00ED32A9 /* AudioToolbox.framework in Frameworks */,
+				F823FB2019FD3FCD005E053D /* AVFoundation.framework in Frameworks */,
 				F823FB2819FD4005005E053D /* UIKit.framework in Frameworks */,
 				F823FB2619FD3FFA005E053D /* Foundation.framework in Frameworks */,
 				F823FB2419FD3FF4005E053D /* CoreGraphics.framework in Frameworks */,
 				F823FB2219FD3FDE005E053D /* libPods-OpenCV.a in Frameworks */,
-				F823FB2019FD3FCD005E053D /* AVFoundation.framework in Frameworks */,
 				F823FB1E19FD3FC7005E053D /* Accelerate.framework in Frameworks */,
 				C42355C2FFE1B3846184E004 /* libPods.a in Frameworks */,
+				1830ACBC1A0CD76100ED32A9 /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1830ACB51A0CD76100ED32A9 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				1830ACB61A0CD76100ED32A9 /* AcousticModelEnglish.bundle */,
+				1830ACB71A0CD76100ED32A9 /* AcousticModelSpanish.bundle */,
+				1830ACB81A0CD76100ED32A9 /* OpenEars.framework */,
+				1830ACB91A0CD76100ED32A9 /* Slt.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
 		8B535080D1880D7E5AE10AEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1830ACB51A0CD76100ED32A9 /* Framework */,
+				1830ACB31A0CD71F00ED32A9 /* AudioToolbox.framework */,
 				F823FB2719FD4005005E053D /* UIKit.framework */,
 				F823FB2519FD3FFA005E053D /* Foundation.framework */,
 				F823FB2319FD3FF4005E053D /* CoreGraphics.framework */,
@@ -369,6 +395,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1830ACBA1A0CD76100ED32A9 /* AcousticModelEnglish.bundle in Resources */,
+				1830ACBB1A0CD76100ED32A9 /* AcousticModelSpanish.bundle in Resources */,
 				F836211D1A0AE13600BEDCE2 /* MonaLisaTemplate.png in Resources */,
 				F89F01211A0B400F0028D14F /* InsertionTableViewCell.xib in Resources */,
 				F810263D19FDA8DF00B71EBE /* Default@2x.png in Resources */,
@@ -550,6 +578,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Theodor Liviu Dumitrescu (WEDR6NNXH6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Theodor Liviu Dumitrescu (WEDR6NNXH6)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				GCC_PREFIX_HEADER = "BuilduingsRecognition/ObjectRecognition-Prefix.pch";
 				INFOPLIST_FILE = BuilduingsRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -569,6 +601,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				GCC_PREFIX_HEADER = "BuilduingsRecognition/ObjectRecognition-Prefix.pch";
 				INFOPLIST_FILE = BuilduingsRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

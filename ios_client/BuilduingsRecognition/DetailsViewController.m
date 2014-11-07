@@ -8,11 +8,16 @@
 
 #import "DetailsViewController.h"
 
-@interface DetailsViewController ()
+@interface DetailsViewController  ()
 
 @end
 
 @implementation DetailsViewController
+
+
+@synthesize fliteController;
+@synthesize slt;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,6 +26,8 @@
     [self.descriptionLabel setText:self.descriptionText];
     [self.nameLabel setText:self.name];
     [self.backButton addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+    
+//    [self.pocketsphinxController startListeningWithLanguageModelAtPath:nil dictionaryAtPath:nil acousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"] languageModelIsJSGF:NO];
     
 }
 
@@ -39,8 +46,41 @@
 }
 */
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self.pocketsphinxController  stopListening];
+
+    
+//     [self.fliteController say:@"Say it, don't spray it." withVoice:self.slt];
+}
+
+
 -(void)popBack{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+#pragma mark-
+#pragma mark- Speech Recognition
+
+
+- (FliteController *)fliteController {
+    if (fliteController == nil) {
+        fliteController = [[FliteController alloc] init];
+    }
+    return fliteController;
+}
+
+- (Slt *)slt {
+    if (slt == nil) {
+        slt = [[Slt alloc] init];
+    }
+    return slt;
+}
+
+
+- (IBAction)hearTheSpeach:(UIButton *)sender {
+    
+      [self.fliteController say:self.descriptionText withVoice:self.slt];
+}
 @end

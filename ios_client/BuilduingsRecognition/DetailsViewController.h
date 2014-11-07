@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <OpenEars/PocketsphinxController.h>
+#import <OpenEars/AcousticModel.h>
 
-@interface DetailsViewController : UIViewController
+#import <Slt/Slt.h>
+#import <OpenEars/FliteController.h>
 
+@interface DetailsViewController : UIViewController <OpenEarsEventsObserverDelegate>{
+
+    
+    FliteController *fliteController;
+    Slt *slt;
+}
+
+- (IBAction)hearTheSpeach:(UIButton *)sender;
 
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *name;
@@ -18,5 +29,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+
+
+@property (strong, nonatomic) FliteController *fliteController;
+@property (strong, nonatomic) Slt *slt;
 
 @end

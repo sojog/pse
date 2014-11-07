@@ -18,7 +18,6 @@
 		F823FAF919FD3CE8005E053D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F823FAF719FD3CE8005E053D /* Main.storyboard */; };
 		F823FAFB19FD3CE8005E053D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F823FAFA19FD3CE8005E053D /* Images.xcassets */; };
 		F823FAFE19FD3CE8005E053D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F823FAFC19FD3CE8005E053D /* LaunchScreen.xib */; };
-		F823FB0A19FD3CE8005E053D /* BuilduingsRecognitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */; };
 		F823FB1B19FD3F78005E053D /* UIImage+OpenCVConvertor.mm in Sources */ = {isa = PBXBuildFile; fileRef = F823FB1719FD3F78005E053D /* UIImage+OpenCVConvertor.mm */; };
 		F823FB1C19FD3F78005E053D /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = F823FB1A19FD3F78005E053D /* VideoSource.mm */; };
 		F823FB1E19FD3FC7005E053D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F823FB1D19FD3FC7005E053D /* Accelerate.framework */; };
@@ -45,16 +44,6 @@
 		F8B7B7D71A0AA6AB00F2B8CB /* PEHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B7B7D61A0AA6AB00F2B8CB /* PEHttpClient.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F823FB0419FD3CE8005E053D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F823FADF19FD3CE8005E053D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F823FAE619FD3CE8005E053D;
-			remoteInfo = BuilduingsRecognition;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2706273F269AF7A62182EEDA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E7E02F2187A8A4A3C73F6C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +62,6 @@
 		F823FAF819FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F823FAFA19FD3CE8005E053D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F823FAFD19FD3CE8005E053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F823FB0319FD3CE8005E053D /* ObjectRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjectRecognitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F823FB0819FD3CE8005E053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F823FB0919FD3CE8005E053D /* BuilduingsRecognitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuilduingsRecognitionTests.m; sourceTree = "<group>"; };
 		F823FB1419FD3F14005E053D /* BuildingsRecognition-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BuildingsRecognition-Prefix.pch"; sourceTree = "<group>"; };
@@ -137,13 +125,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F823FB0019FD3CE8005E053D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -197,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				F823FAE719FD3CE8005E053D /* ObjectRecognition.app */,
-				F823FB0319FD3CE8005E053D /* ObjectRecognitionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -351,24 +331,6 @@
 			productReference = F823FAE719FD3CE8005E053D /* ObjectRecognition.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F823FB0219FD3CE8005E053D /* ObjectRecognitionTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "ObjectRecognitionTests" */;
-			buildPhases = (
-				F823FAFF19FD3CE8005E053D /* Sources */,
-				F823FB0019FD3CE8005E053D /* Frameworks */,
-				F823FB0119FD3CE8005E053D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F823FB0519FD3CE8005E053D /* PBXTargetDependency */,
-			);
-			name = ObjectRecognitionTests;
-			productName = BuilduingsRecognitionTests;
-			productReference = F823FB0319FD3CE8005E053D /* ObjectRecognitionTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -381,10 +343,6 @@
 					F823FAE619FD3CE8005E053D = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 5YMP9S8S26;
-					};
-					F823FB0219FD3CE8005E053D = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = F823FAE619FD3CE8005E053D;
 					};
 				};
 			};
@@ -402,7 +360,6 @@
 			projectRoot = "";
 			targets = (
 				F823FAE619FD3CE8005E053D /* ObjectRecognition */,
-				F823FB0219FD3CE8005E053D /* ObjectRecognitionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -420,13 +377,6 @@
 				F823FAFB19FD3CE8005E053D /* Images.xcassets in Resources */,
 				F810263E19FDA8DF00B71EBE /* Default-568h@2x.png in Resources */,
 				F810263C19FDA8DF00B71EBE /* Default.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F823FB0119FD3CE8005E053D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,23 +443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F823FAFF19FD3CE8005E053D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F823FB0A19FD3CE8005E053D /* BuilduingsRecognitionTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F823FB0519FD3CE8005E053D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F823FAE619FD3CE8005E053D /* ObjectRecognition */;
-			targetProxy = F823FB0419FD3CE8005E053D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F823FAF719FD3CE8005E053D /* Main.storyboard */ = {
@@ -614,8 +548,8 @@
 			baseConfigurationReference = AAD6BD87000765FC51874BB2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Silviu Ojog (GZ82TFE5K6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Theodor Liviu Dumitrescu (WEDR6NNXH6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Theodor Liviu Dumitrescu (WEDR6NNXH6)";
 				GCC_PREFIX_HEADER = "BuilduingsRecognition/ObjectRecognition-Prefix.pch";
 				INFOPLIST_FILE = BuilduingsRecognition/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -625,7 +559,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = ObjectRecognition;
-				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
+				PROVISIONING_PROFILE = "a2e5b72e-cbed-407f-a22e-37939193dbc3";
 			};
 			name = Debug;
 		};
@@ -644,41 +578,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = ObjectRecognition;
-				PROVISIONING_PROFILE = "8139329a-abb2-40a2-83b8-375cde93edf5";
-			};
-			name = Release;
-		};
-		F823FB1119FD3CE8005E053D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = ObjectRecognitionTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
-			};
-			name = Debug;
-		};
-		F823FB1219FD3CE8005E053D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BuilduingsRecognitionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = ObjectRecognitionTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuilduingsRecognition.app/BuilduingsRecognition";
+				PROVISIONING_PROFILE = "a2e5b72e-cbed-407f-a22e-37939193dbc3";
 			};
 			name = Release;
 		};
@@ -699,15 +599,6 @@
 			buildConfigurations = (
 				F823FB0E19FD3CE8005E053D /* Debug */,
 				F823FB0F19FD3CE8005E053D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F823FB1019FD3CE8005E053D /* Build configuration list for PBXNativeTarget "ObjectRecognitionTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F823FB1119FD3CE8005E053D /* Debug */,
-				F823FB1219FD3CE8005E053D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

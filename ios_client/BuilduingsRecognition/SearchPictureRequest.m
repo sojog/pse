@@ -14,13 +14,7 @@
     
     if (self = [super init])
     {
-        _picture=UIImageJPEGRepresentation(photoImage, 0.5f);
-//        UIImagePNGRepresentation(photoImage);
-//            NSData *dataImage = UIImagePNGRepresentation(photoImage);
-//                _picture = [dataImage base64EncodedStringWithOptions:
-//                         
-//                         NSDataBase64Encoding64CharacterLineLength];
-        
+        _picture= UIImagePNGRepresentation(photoImage);
         _xCoordinate=xPoint;
         _yCoordinate=yPoint;
     }
@@ -30,7 +24,7 @@
 -(NSDictionary*)dictionaryForm
 {
     NSDictionary *dict =[[ NSDictionary alloc] initWithObjectsAndKeys:_xCoordinate,@"x",_yCoordinate,@"y",nil];
-//                         _picture, @"image", nil];
+//      NSDictionary *dict =[[ NSDictionary alloc] initWithObjectsAndKeys:_xCoordinate,@"x",_yCoordinate,@"y", @"media.png", @"image", nil];
 
  
     

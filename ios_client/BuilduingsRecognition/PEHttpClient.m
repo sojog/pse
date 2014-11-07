@@ -60,11 +60,11 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
         sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
         
         
-        sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
+        sharedClient.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
         sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
-//        [sharedClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-  [sharedClient.requestSerializer setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", kAFMultipartFormBoundary] forHTTPHeaderField:@"Content-Type"];
+       [sharedClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//  [sharedClient.requestSerializer setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", kAFMultipartFormBoundary] forHTTPHeaderField:@"Content-Type"];
         
     });
     
@@ -91,11 +91,15 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
     return sharedClient;
 }
 
+/********************************************* ********************** **********************
+ To use this function when we have constant baseurl
+ ********************************************* ********************** **********************/
+
 
 +(void)getImageInformationWithRequest:(SearchPictureRequest*)request
                      andResponseBlock:(PERequestResponse)block
 {
-    NSLog(@"%@",[request dictionaryForm]);
+    NSLog(@"request %@",[request dictionaryForm]);
     
     
     [[PEHttpClient sharedHTTPClient] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings] parameters:[request dictionaryForm] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -103,8 +107,8 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
         
         [formData appendPartWithFileData:request.picture
                                     name:@"media"
-                                fileName:@"media.jpg"
-                                mimeType:@"image/jpeg"];
+                                fileName:@"media.png"
+                                mimeType:@"image/png"];
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success %@!",operation.responseString);
@@ -113,13 +117,15 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
     }];
     
     
-//    [[PEHttpClient sharedHTTPClient] GET: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
-//                              parameters:[request dictionaryForm]
-//                                 success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
-//                                 failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+
     
 }
 
+
+
+/********************************************* ******************************************** *********************************************
+ TEST function sending picture using multipart data
+ ********************************************* ********************************************* ********************** **********************/
 
 ////variable baseURL
 
@@ -127,12 +133,13 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
 +(void)getImageInformationWithBaseURL:(NSString*)baseURL Request:(SearchPictureRequest*)request
                      andResponseBlock:(PERequestResponse)block
 {
+     NSLog(@"request %@",[request dictionaryForm]);
     [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings] parameters:[request dictionaryForm] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         [formData appendPartWithFileData:request.picture
-                                    name:@"media[file]"
+                                    name:@"media"
                                 fileName:@"media.png"
-                                mimeType:@"1"];
+                                mimeType:@"image/png"];
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success %@!",operation.responseString);
@@ -140,13 +147,34 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
         NSLog(@"failure %@!", error);
     }];
     
-    //
-    //    [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
-    //                                                  parameters:[request dictionaryForm]
-    //                                                     success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
-    //                                                     failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+    
+    
+  
+    
+   
     
 }
+
+/********************************************* ******************************************** *********************************************
+ TEST function sending picture WITHOUT using multipart data
+ ********************************************* ********************************************* ********************** **********************/
+
+
++(void)getImageInformationWithBaseURL:(NSString *)baseURL image:(UIImage *)image Request:(SearchPictureRequest *)request andResponseBlock:(PERequestResponse)block
+{
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc] initWithDictionary:[request dictionaryForm]];
+    NSData *dataImage= UIImagePNGRepresentation(image);
+     NSString *string= [dataImage base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [dict setObject:string forKey:@"image"];
+    NSLog(@"%@", dict);
+    
+    [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
+                                                  parameters:dict
+                                                     success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
+                                                     failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+
+}
+
 
 
 

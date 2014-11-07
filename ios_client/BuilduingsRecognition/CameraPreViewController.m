@@ -143,26 +143,34 @@
         UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         NSLog(@"%@ image", screenshot);
-        
+        /*
         if (screenshot) {
-//            [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.0.11:8000/" Request:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate]  andResponseBlock:^(PEBaseResponse *response, NSError *error) {
-//               
-//                NSLog(@"response ..%@",response);
-//                NSLog(@"error ..%@", error);
-//            }];
+            [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate]  andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+               
+              [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
+                NSLog(@"response ..%@",response);
+                NSLog(@"error ..%@", error);
+            }];
+         
+          }
+            */
+        
+        
+            //other test
+            
+            if (screenshot) {
+                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+                    [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
+                    NSLog(@"response ..%@",response);
+                    NSLog(@"error ..%@", error);
+                }];
+            }
+            
+            
+            
+            
+       
 
-            
-            
-            
-               [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
-//            [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
-//                NSLog(@"response ..%@",response);
-//                NSLog(@"error ..%@", error);
-//            }];
-        }
-//        [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
-//            
-//        }];
         
         
         

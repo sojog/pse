@@ -29,6 +29,8 @@ typedef void (^PERequestResponse)(PEBaseResponse *response, NSError* error);
 +(void)getImageInformationWithBaseURL:(NSString*)baseURL Request:(SearchPictureRequest*)request
                      andResponseBlock:(PERequestResponse)block;
 
++(void)getImageInformationWithBaseURL:(NSString *)baseURL image:(UIImage *)image Request:(SearchPictureRequest *)request andResponseBlock:(PERequestResponse)block;
+
 +(void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlockWithResponseBlock:(PERequestResponse)block;
 +(void)cancelRequests;
 

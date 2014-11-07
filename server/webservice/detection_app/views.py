@@ -3,9 +3,11 @@ import subprocess
 import time
 
 from django.http import HttpResponse, HttpResponseServerError, HttpResponseForbidden
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from webservice.settings import DETECTOR_PATH
 
-# TODO(sghiaus): Use Django forms to manage the upload.
+# TODO(sghiaus): Use Django forms to manage the request.
+@csrf_exempt
 def identify_painting(request):
     if request.method != 'POST':
         return HttpResponseServerError('Request is not POST')
@@ -16,12 +18,12 @@ def identify_painting(request):
         return HttpResponseServerError('File \'image\' missing from request.')
 
     if 'x' in request.POST:
-        x = int(request.POST['x'])
+        x = float(request.POST['x'])
     else:
         return HttpResponseServerError('Parameter \'x\' missing from request.')
 
     if 'y' in request.POST:
-        y = int(request.POST['y'])
+        y = float(request.POST['y'])
     else:
         return HttpResponseServerError('Parameter \'y\' missing from request.')
 

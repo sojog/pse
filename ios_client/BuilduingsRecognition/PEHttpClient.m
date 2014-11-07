@@ -7,7 +7,7 @@
 //
 
 #import "PEHttpClient.h"
-#define kBasePath               @"http://192.168.0.11:8000/"
+#define kBasePath               @"http://192.168.0.16:8000/"
 #define kPathIdentifyPaintings  @"identify_painting/"
 
 
@@ -106,8 +106,8 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
 
         
         [formData appendPartWithFileData:request.picture
-                                    name:@"media"
-                                fileName:@"media.png"
+                                    name:@"image"
+                                fileName:@"image.png"
                                 mimeType:@"image/png"];
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -166,7 +166,7 @@ static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY"
     NSData *dataImage= UIImagePNGRepresentation(image);
      NSString *string= [dataImage base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     [dict setObject:string forKey:@"image"];
-    NSLog(@"%@", dict);
+//    NSLog(@"%@", dict);
     
     [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
                                                   parameters:dict

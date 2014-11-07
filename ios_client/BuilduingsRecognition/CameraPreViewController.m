@@ -28,9 +28,7 @@
 
 @implementation CameraPreViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    NSLog(@"%@",NSStringFromClass([self class]));
+- (void)setCameraPreview {
     // Do any additional setup after loading the view.
     
     NSError *error = nil;
@@ -64,8 +62,14 @@
     [avCaptureSession startRunning];
     
     [self setCaptureSession:avCaptureSession];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"%@",NSStringFromClass([self class]));
+   
     
-    
+   
     UISwipeGestureRecognizer *swipeGesture= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(revealMenu:)];
     [self.view addGestureRecognizer:swipeGesture];
     
@@ -107,7 +111,7 @@
         
            NSLog(@"ip Number %@",ipNumber);
     }
-    
+     [self setCameraPreview];
 }
 
 #pragma mark - Navigation
@@ -158,15 +162,21 @@
         
             //other test
             
-//            if (screenshot) {
-//                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+            if (screenshot) {
+//                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.0.16:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
 //                    [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
 //                    NSLog(@"response ..%@",response);
 //                    NSLog(@"error ..%@", error);
 //                }];
-//            }
+                
+                [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:[UIImage imageNamed:@"mona"] xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+                    
+                }];
+                
+            }
         
-            
+     
+        
             
              [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
        

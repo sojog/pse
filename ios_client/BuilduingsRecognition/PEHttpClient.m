@@ -7,12 +7,14 @@
 //
 
 #import "PEHttpClient.h"
-#define kBasePath               @"http://192.168.0.11:8000"
+#define kBasePath               @"http://192.168.0.16:8000/"
 #define kPathIdentifyPaintings  @"identify_painting/"
+
 
 
 @implementation PEHttpClient
 static PEHttpClient *sharedClient = nil;
+static NSString * const kAFMultipartFormBoundary = @"Boundary+0xAbCdEfGbOuNdArY";
 
 +(id)sharedHTTPClient
 {
@@ -21,8 +23,8 @@ static PEHttpClient *sharedClient = nil;
         sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kBasePath]];
         
         
-        sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
-        sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
+        sharedClient.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",@"multipart/form-data",nil];
         sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
         [sharedClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
@@ -58,10 +60,11 @@ static PEHttpClient *sharedClient = nil;
         sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
         
         
-        sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
+        sharedClient.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
         sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
-        [sharedClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+       [sharedClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//  [sharedClient.requestSerializer setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", kAFMultipartFormBoundary] forHTTPHeaderField:@"Content-Type"];
         
     });
     
@@ -88,19 +91,41 @@ static PEHttpClient *sharedClient = nil;
     return sharedClient;
 }
 
+/********************************************* ********************** **********************
+ To use this function when we have constant baseurl
+ ********************************************* ********************** **********************/
+
 
 +(void)getImageInformationWithRequest:(SearchPictureRequest*)request
                      andResponseBlock:(PERequestResponse)block
 {
+    NSLog(@"request %@",[request dictionaryForm]);
     
     
-    [[PEHttpClient sharedHTTPClient] GET: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
-                               parameters:nil
-                                  success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
-                                  failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+    [[PEHttpClient sharedHTTPClient] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings] parameters:[request dictionaryForm] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+
+        
+        [formData appendPartWithFileData:request.picture
+                                    name:@"image"
+                                fileName:@"image.png"
+                                mimeType:@"image/png"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success %@!",operation.responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failure %@!", error);
+    }];
+    
+    
+
     
 }
 
+
+
+/********************************************* ******************************************** *********************************************
+ TEST function sending picture using multipart data
+ ********************************************* ********************************************* ********************** **********************/
 
 ////variable baseURL
 
@@ -108,14 +133,48 @@ static PEHttpClient *sharedClient = nil;
 +(void)getImageInformationWithBaseURL:(NSString*)baseURL Request:(SearchPictureRequest*)request
                      andResponseBlock:(PERequestResponse)block
 {
+     NSLog(@"request %@",[request dictionaryForm]);
+    [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings] parameters:[request dictionaryForm] constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        [formData appendPartWithFileData:request.picture
+                                    name:@"media"
+                                fileName:@"media.png"
+                                mimeType:@"image/png"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success %@!",operation.responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failure %@!", error);
+    }];
     
     
-    [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
-                                                  parameters:[request dictionaryForm]
-                                                     success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
-                                                     failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+    
+  
+    
+   
     
 }
+
+/********************************************* ******************************************** *********************************************
+ TEST function sending picture WITHOUT using multipart data
+ ********************************************* ********************************************* ********************** **********************/
+
+
++(void)getImageInformationWithBaseURL:(NSString *)baseURL image:(UIImage *)image Request:(SearchPictureRequest *)request andResponseBlock:(PERequestResponse)block
+{
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc] initWithDictionary:[request dictionaryForm]];
+    NSData *dataImage= UIImagePNGRepresentation(image);
+     NSString *string= [dataImage base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    [dict setObject:string forKey:@"image"];
+//    NSLog(@"%@", dict);
+    
+    [[PEHttpClient sharedHTTPClientWithBaseURL:baseURL] POST: [NSString stringWithFormat:@"%@" ,kPathIdentifyPaintings]
+                                                  parameters:dict
+                                                     success:[PEHttpClient successBlockWithResponseBlock: block andRequest:request]
+                                                     failure:[PEHttpClient failureBlockWithResponseBlock:block]];
+
+}
+
 
 
 

@@ -11,20 +11,24 @@
 #import "PEHttpClient.h"
 #import "SearchPictureRequest.h"
 #import "SearchPictureResponse.h"
+#import "DetailsViewController.h"
 
 
 @interface CameraPreViewController (){
     int     cameraOrientation;
     AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer;
+    NSString *ipNumber;
+    UIImage *currentImage;
+    NSString *currentName;
+    NSString *currrentDescription;
+    
 }
 
 @end
 
 @implementation CameraPreViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    NSLog(@"%@",NSStringFromClass([self class]));
+- (void)setCameraPreview {
     // Do any additional setup after loading the view.
     
     NSError *error = nil;
@@ -58,8 +62,14 @@
     [avCaptureSession startRunning];
     
     [self setCaptureSession:avCaptureSession];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"%@",NSStringFromClass([self class]));
+   
     
-    
+   
     UISwipeGestureRecognizer *swipeGesture= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(revealMenu:)];
     [self.view addGestureRecognizer:swipeGesture];
     
@@ -89,6 +99,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ipNumber"]!=nil) {
+        NSLog(@"ip Number %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"ipNumber"]);
+        ipNumber=[[NSUserDefaults standardUserDefaults] objectForKey:@"ipNumber"];
+    }
+    else
+    {
+    ipNumber=@"192.168.0.11:8000";
+        
+           NSLog(@"ip Number %@",ipNumber);
+    }
+     [self setCameraPreview];
+}
 
 #pragma mark - Navigation
 
@@ -123,22 +147,40 @@
         UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         NSLog(@"%@ image", screenshot);
-        
+        /*
         if (screenshot) {
-//            [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.0.11:8000/" Request:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate]  andResponseBlock:^(PEBaseResponse *response, NSError *error) {
-//               
-//                NSLog(@"response ..%@",response);
-//                NSLog(@"error ..%@", error);
-//            }];
-            
-            [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+            [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.10.117:8000/" Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate]  andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+               
+              [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
                 NSLog(@"response ..%@",response);
                 NSLog(@"error ..%@", error);
             }];
-        }
-        [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:nil xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+         
+          }
+            */
+        
+        
+            //other test
             
-        }];
+            if (screenshot) {
+//                [PEHttpClient getImageInformationWithBaseURL:@"http://192.168.0.16:8000/" image:screenshot Request:[[SearchPictureRequest alloc] initWithPhoto:screenshot xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+//                    [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
+//                    NSLog(@"response ..%@",response);
+//                    NSLog(@"error ..%@", error);
+//                }];
+                
+                [PEHttpClient getImageInformationWithRequest:[[SearchPictureRequest alloc] initWithPhoto:[UIImage imageNamed:@"mona"] xCoordinate:xCoordinate yCoordinate:yCoordinate] andResponseBlock:^(PEBaseResponse *response, NSError *error) {
+                    
+                }];
+                
+            }
+        
+     
+        
+            
+             [self performSegueWithIdentifier:NSStringFromClass([DetailsViewController class]) sender:nil];
+       
+
         
         
         
@@ -176,6 +218,30 @@
     }
 }
 
+
+#pragma mark-
+#pragma mark- Navigation
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController isKindOfClass:[DetailsViewController class]]) {
+        DetailsViewController *detailsVC= (DetailsViewController*)segue.destinationViewController;
+        
+        
+        //testing
+        detailsVC.image=[UIImage imageNamed:@"mona"];
+        detailsVC.name=@"some text";
+        detailsVC.descriptionText=@"Mona Lisa (also known as La Gioconda or La Joconde) is a 16th-century portrait painted in oil by Leonardo da Vinci during the Renaissance in Florence, Italy. Many people think Mona Lisa's smile is mysterious.[1] It is so often studied, recognized, and copied that it is the most famous painting in the world.[2][3][4] The Louvre says that about 80 percent of its visitors come to see the painting of Mona Lisa.[4]";
+        
+       
+        /*
+         
+         detailsVC.image=currentImage;
+         detailsVC.name=currentName;
+         detailsVC.descriptionText=currrentDescription;
+         */
+    }
+    
+    
+}
 
 
 

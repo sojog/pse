@@ -9,11 +9,14 @@
 #import "MenuViewController.h"
 #import "FINavigationViewController.h"
 #import "Globals.h"
+#import "InsertionTableViewCell.h"
 
 
 @interface MenuViewController (){
 
     NSArray *menuTreeArray;
+    InsertionTableViewCell *insertionCell;
+    NSString *ipNumber;
     
 }
 
@@ -53,6 +56,7 @@
 
     
      [self initSlidingMenuElemnts];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,14 +118,11 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"insertionCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:cellIdentifier];
-    }
-    
-    return cell;
+    insertionCell=[[InsertionTableViewCell alloc] initWithDefaultNibNameAndDefaultReuseIdentifier];
+    [insertionCell.ipTextField setDelegate:self];
+    insertionCell.selectionStyle=UITableViewCellSelectionStyleNone;
+   return insertionCell;
 }
 
 
@@ -153,6 +154,24 @@
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    ipNumber=textField.text;
+    NSLog(@"ipNumber %@",ipNumber);
+    
+    if(![ipNumber isEqualToString:@""]){
+    
+    [[NSUserDefaults standardUserDefaults] setObject:ipNumber forKey:@"ipNumber"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+     }
+     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"kFirstNavVCId"];
+    
+    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+        CGRect frame = self.slidingViewController.topViewController.view.frame;
+        self.slidingViewController.topViewController = newTopViewController;
+        self.slidingViewController.topViewController.view.frame = frame;
+        [self.slidingViewController resetTopView];
+  
+    }];
+   
     
     return YES;
 }

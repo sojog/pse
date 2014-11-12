@@ -7,12 +7,14 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+#include "server/detector/edges.h"
 #include "server/detector/feature_matcher.h"
 #include "third_party/rapidjson/document.h"
 #include "third_party/rapidjson/stringbuffer.h"
 #include "third_party/rapidjson/writer.h"
 
 using namespace cv;
+using namespace detector;
 using namespace rapidjson;
 using namespace std;
 

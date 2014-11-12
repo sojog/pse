@@ -11,6 +11,8 @@
 using namespace cv;
 using namespace std;
 
+namespace detector {
+
 // TODO(sghiaus): Also scale down the images so the computation is faster.
 // TODO(sghiaus): Template features can be precomputed and input image features
 // should only be computed once.
@@ -57,3 +59,5 @@ int ComputeFeatureMatchScore(const Mat& input_image,
 
     return good_matches.size();
 }
+
+}  // namespace detector

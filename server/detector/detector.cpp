@@ -18,7 +18,7 @@ using namespace std;
 
 namespace {
 
-// The reference image will be scaled down while keeping the aspect ratio, so that 
+// The input image will be scaled down while keeping the aspect ratio, so that 
 // max(width, height) = 512.
 const int MAX_IMAGE_EDGE_PIXELS = 512;
 
@@ -38,17 +38,20 @@ int main(int argc, const char** argv) {
     }
     string container_path = argv[1];
     string database_path = argv[2];
-    string reference_image_path = container_path + "image.png";
+    string input_image_path = container_path + "image.png";
 
-    // Read the reference image.
-    Mat reference_image = ReadImage(reference_image_path);
-    if (!reference_image.data) {
-        cerr << "Error loading image: " << reference_image_path << "\n";
+    // Read the input image.
+    Mat input_image = ReadImage(input_image_path);
+    if (!input_image.data) {
+        cerr << "Error loading image: " << input_image_path << "\n";
         return ERR_FAILED_TO_OPEN_IMAGE;
     }
+    Mat gray_input_image;
+    cvtColor(input_image, gray_input_image, CV_BGR2GRAY);
 
 #ifdef DEBUG
-    imwrite(container_path + "scaled.png", reference_image);
+    imwrite(container_path + "scaled.png", input_image);
+    imwrite(container_path + "gray_scaled.png", gray_input_image);
 #endif
     
     // Read the json database.
@@ -67,7 +70,7 @@ int main(int argc, const char** argv) {
     for (SizeType i = 0; i < document.Size(); ++i) {
         Value& entry = document[i];
         string template_path = database_path + "/" + entry["template"].GetString();
-        int score = ComputeFeatureMatchScore(reference_image_path, template_path);
+        int score = ComputeFeatureMatchScore(gray_input_image, template_path);
         if (score > best_score) {
             best_score = score;
             best_index = i;

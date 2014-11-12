@@ -27,17 +27,18 @@ def identify_painting(request):
     else:
         return HttpResponseServerError('Parameter \'y\' missing from request.')
 
-    # TODO(sghiaus): Make this path relative to the test file root?
-    # TODO(sghiaus): Delete the temporary image after it's no longer needed.
-    image_path = "detection_app/temp/image_" + str(int(time.time())) + ".png"
-    abs_image_path = os.path.abspath(image_path)
+    # TODO(sghiaus): Should use something better than a timestamp.
+    request_temp_container = "detection_app/temp/" + str(int(time.time())) + "/"
+    os.makedirs(request_temp_container)
+    image_path = request_temp_container + "image.png"
     image_file = open(image_path, "wb")
     image_file.write(image.read())
     image_file.close()
 
     database_path = "../detector/data"
     abs_database_path = os.path.abspath(database_path)
-    content = subprocess.check_output([DETECTOR_PATH, abs_image_path, abs_database_path])
+    abs_container_path = os.path.abspath(request_temp_container) + "/"
+    content = subprocess.check_output([DETECTOR_PATH, abs_container_path, abs_database_path])
 
     response = HttpResponse(content)
     response['Content-Length'] = len(content)

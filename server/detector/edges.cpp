@@ -1,5 +1,7 @@
 #include "server/detector/edges.h"
 
+#include <cmath>
+
 using namespace cv;
 
 namespace {
@@ -7,7 +9,7 @@ namespace {
 const int CANNY_MIN_THRESH = 100;
 const int CANNY_MAX_THRESH = 100;
 const int CANNY_APERTURE = 3;
-const int GAUSS_KERNEL = 7;
+const int GAUSS_KERNEL = 5;
 const int GAUSS_SIGMA = 2;
 
 }  // namespace
@@ -18,7 +20,8 @@ EdgeDetector::EdgeDetector(const std::string& debug_container_path) {
     this->debug_container_path = debug_container_path;
 }
 
-Rect EdgeDetector::DetectPaintingRect(const Mat& image, int x, int y) {
+bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y, 
+                                      Quad2f& painging_quad) {
     Mat blurred;
     GaussianBlur(image, blurred, Size(GAUSS_KERNEL, GAUSS_KERNEL),
                  GAUSS_SIGMA, GAUSS_SIGMA);
@@ -26,48 +29,45 @@ Rect EdgeDetector::DetectPaintingRect(const Mat& image, int x, int y) {
     Mat canny_edges;
     Canny(blurred, canny_edges, CANNY_MIN_THRESH, CANNY_MAX_THRESH);
 
-    // TODO(sghiaus): Hough lines or probablistic Hough Lines?
-    vector<Vec4i> hough_lines_p;
-    HoughLinesP(canny_edges, hough_lines_p, 1, CV_PI / 180, 70, 30, 10);
+    vector<Vec4i> hough_lines;
+    HoughLinesP(canny_edges, hough_lines, 1, CV_PI / 180, 90, 10, 40);
 
-    vector<Vec2f> hough_lines;
-    HoughLines(canny_edges, hough_lines, 1, CV_PI / 180, 100, 0, 0);
+    vector<Line2f> horizontal_lines;
+    vector<Line2f> vertical_lines;
+    for (Vec4i hough_line : hough_lines) {
+        Line2f line(Point(hough_line[0], hough_line[1]),
+                    Point(hough_line[2], hough_line[3]));
+        if (abs(line.a.x - line.b.x) > abs(line.a.y - line.b.y)) {
+            horizontal_lines.push_back(line);
+        } else {
+            vertical_lines.push_back(line);
+        }
+    }
+
+    Line2f left_line, right_line, top_line, bottom_line;
+    if (horizontal_lines.size() >= 2 && vertical_lines.size() >= 2) {
+    }
+
+    // TODO(sghiaus): Cut everything that's outside of line intersections,
+    // relative to hit point.
 
     if (!debug_container_path.empty()) {
         imwrite(debug_container_path + "blurred.png", blurred);
         imwrite(debug_container_path + "canny.png", canny_edges);
         Scalar color(0, 200, 0);
 
-        Mat hough_p_image(image.size().height, image.size().width, CV_8UC3);
-        hough_p_image = Scalar(0, 0, 0);
-        for (Vec4i hough_line : hough_lines_p) {
-            line(hough_p_image, Point(hough_line[0], hough_line[1]),
-                 Point(hough_line[2], hough_line[3]), color);
-        }
-        imwrite(debug_container_path + "hough_probabilistic.png", hough_p_image);
-
         Mat hough_image(image.size().height, image.size().width, CV_8UC3);        
         hough_image = Scalar(0, 0, 0);
-        for (Vec2f hough_line : hough_lines) {
-            float rho = hough_line[0];
-            float theta = hough_line[1];
-            Point p1, p2;
-            double a = cos(theta);
-            double b = sin(theta);
-            double x0 = a * rho;
-            double y0 = b * rho;
-            p1.x = cvRound(x0 + 1000 * (-b));
-            p1.y = cvRound(y0 + 1000 * (a));
-            p2.x = cvRound(x0 - 1000 * (-b));
-            p2.y = cvRound(y0 - 1000 * (a));
-            line(hough_image, p1, p2, color);
+        for (const Line2f& l : horizontal_lines) {
+            line(hough_image, l.a, l.b, Scalar(0, 200, 0));
+        }
+        for (const Line2f& l : vertical_lines) {
+            line(hough_image, l.a, l.b, Scalar(0, 0, 200));
         }
         imwrite(debug_container_path + "hough.png", hough_image);
     }
 
-    // TODO(sghiaus): Return an actual result.
-    Rect result;
-    return result;
+    return true;
 }
 
 }  // namespace detector

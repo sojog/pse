@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cassert>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -9,6 +10,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "server/detector/edges.h"
 #include "server/detector/feature_matcher.h"
+#include "server/detector/geometry.h"
 #include "third_party/rapidjson/document.h"
 #include "third_party/rapidjson/stringbuffer.h"
 #include "third_party/rapidjson/writer.h"
@@ -33,6 +35,7 @@ string debug_container_path;
 
 Mat ReadImage(const string& path, int& hit_x, int& hit_y);
 Mat ExtractPainting(const Mat& image, int x, int y);
+Mat ReadHue(const Mat& image);
 
 } // namespace
 
@@ -55,22 +58,20 @@ int main(int argc, const char** argv) {
 
     // Read the input image.
     Mat input_image = ReadImage(input_image_path, hit_x, hit_y);
-    if (!input_image.data) {
-        cerr << "Error loading image: " << input_image_path << "\n";
-        return ERR_FAILED_TO_OPEN_IMAGE;
-    }
     Mat gray_input_image;
     cvtColor(input_image, gray_input_image, CV_BGR2GRAY);
+    Mat hue_input_image = ReadHue(input_image);
 
     // Process the input image to only keep the painting quadrilateral and transform
     // it to a rectangle.
-    // TODO(sghiaus): Use this image for feature extraction.
+    // TODO(sghiaus): Once the function is ready, use this image for feature extraction.
     Mat gray_painting_image = ExtractPainting(gray_input_image, hit_x, hit_y);
 
 #ifdef DEBUG
     imwrite(debug_container_path + "scaled.png", input_image);
     imwrite(debug_container_path + "gray_scaled.png", gray_input_image);
-    imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
+    imwrite(debug_container_path + "hue.png", hue_input_image);
+    // imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
 #endif
     
     // Read the json database.
@@ -134,8 +135,21 @@ Mat ReadImage(const string& path, int& hit_x, int& hit_y) {
             resize(raw_image, scaled_image, final_size);
             return scaled_image;
         }
+    } else {
+        cerr << "Error loading image: " << path << "\n";
+        exit(ERR_FAILED_TO_OPEN_IMAGE);
     }
     return raw_image;
+}
+
+Mat ReadHue(const Mat& image) {
+    Mat hue;
+    vector<Mat> channels;
+    Mat hsv;
+    cvtColor(image, hsv, CV_RGB2HSV);
+    split(hsv, channels);
+    hue = channels[0];
+    return hue;
 }
 
 Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
@@ -147,10 +161,11 @@ Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
     EdgeDetector edge_detector(debug_container_path);
 #endif
 
-    Rect painting_edges = edge_detector.DetectPaintingRect(image, hit_x, hit_y);
-
-    // TODO(sghiaus): Apply perspective transform on the rect and compare the result
-    // with the known templates.
+    Quad2f painting_quad;
+    if (edge_detector.DetectPaintingQuad(image, hit_x, hit_y, painting_quad)) {
+        // TODO(sghiaus): Apply perspective transform on the rect and compare the result
+        // with the known templates.
+    }
 
     return painting;
 }

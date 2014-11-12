@@ -18,12 +18,12 @@ def identify_painting(request):
         return HttpResponseServerError('File \'image\' missing from request.')
 
     if 'x' in request.POST:
-        x = float(request.POST['x'])
+        x = round(float(request.POST['x']))
     else:
         return HttpResponseServerError('Parameter \'x\' missing from request.')
 
     if 'y' in request.POST:
-        y = float(request.POST['y'])
+        y = round(float(request.POST['y']))
     else:
         return HttpResponseServerError('Parameter \'y\' missing from request.')
 
@@ -38,7 +38,7 @@ def identify_painting(request):
     database_path = "../detector/data"
     abs_database_path = os.path.abspath(database_path)
     abs_container_path = os.path.abspath(request_temp_container) + "/"
-    content = subprocess.check_output([DETECTOR_PATH, abs_container_path, abs_database_path])
+    content = subprocess.check_output([DETECTOR_PATH, abs_container_path, abs_database_path, str(x), str(y)])
 
     response = HttpResponse(content)
     response['Content-Length'] = len(content)

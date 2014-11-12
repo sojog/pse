@@ -27,23 +27,34 @@ const int MAX_IMAGE_EDGE_PIXELS = 512;
 const int ERR_INVALID_ARGC = 1;
 const int ERR_FAILED_TO_OPEN_IMAGE = 2;
 
-Mat ReadImage(const string& path);
+#ifdef DEBUG
+string debug_container_path;
+#endif
+
+Mat ReadImage(const string& path, int& hit_x, int& hit_y);
+Mat ExtractPainting(const Mat& image, int x, int y);
 
 } // namespace
 
-// Usage: "./detector <container_path> <database_path>"
+// Usage: "./detector <container_path> <database_path> <hit_x> <hit_y>"
 int main(int argc, const char** argv) {
     // Read arguments.
-    if (argc != 3) {
+    if (argc != 5) {
         cerr << "Invalid number of arguments (" << argc - 1 << ").";
         return ERR_INVALID_ARGC;
     }
     string container_path = argv[1];
     string database_path = argv[2];
+    int hit_x = stoi(argv[3]);
+    int hit_y = stoi(argv[4]);
     string input_image_path = container_path + "image.png";
 
+#ifdef DEBUG
+    debug_container_path = container_path;
+#endif
+
     // Read the input image.
-    Mat input_image = ReadImage(input_image_path);
+    Mat input_image = ReadImage(input_image_path, hit_x, hit_y);
     if (!input_image.data) {
         cerr << "Error loading image: " << input_image_path << "\n";
         return ERR_FAILED_TO_OPEN_IMAGE;
@@ -51,9 +62,15 @@ int main(int argc, const char** argv) {
     Mat gray_input_image;
     cvtColor(input_image, gray_input_image, CV_BGR2GRAY);
 
+    // Process the input image to only keep the painting quadrilateral and transform
+    // it to a rectangle.
+    // TODO(sghiaus): Use this image for feature extraction.
+    Mat gray_painting_image = ExtractPainting(gray_input_image, hit_x, hit_y);
+
 #ifdef DEBUG
-    imwrite(container_path + "scaled.png", input_image);
-    imwrite(container_path + "gray_scaled.png", gray_input_image);
+    imwrite(debug_container_path + "scaled.png", input_image);
+    imwrite(debug_container_path + "gray_scaled.png", gray_input_image);
+    imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
 #endif
     
     // Read the json database.
@@ -102,7 +119,7 @@ int main(int argc, const char** argv) {
 
 namespace {
 
-Mat ReadImage(const string& path) {
+Mat ReadImage(const string& path, int& hit_x, int& hit_y) {
     Mat raw_image = imread(path);
     if (raw_image.data) {
         Size raw_image_size = raw_image.size();
@@ -111,12 +128,31 @@ Mat ReadImage(const string& path) {
             float scale_ratio = MAX_IMAGE_EDGE_PIXELS / (float) max_edge;
             Size final_size(raw_image_size.width * scale_ratio,
                             raw_image_size.height * scale_ratio);
+            hit_x *= scale_ratio;
+            hit_y *= scale_ratio;
             Mat scaled_image;
             resize(raw_image, scaled_image, final_size);
             return scaled_image;
         }
     }
     return raw_image;
+}
+
+Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
+    Mat painting;
+
+#ifndef DEBUG
+    EdgeDetector edge_detector;
+#else
+    EdgeDetector edge_detector(debug_container_path);
+#endif
+
+    Rect painting_edges = edge_detector.DetectPaintingRect(image, hit_x, hit_y);
+
+    // TODO(sghiaus): Apply perspective transform on the rect and compare the result
+    // with the known templates.
+
+    return painting;
 }
 
 } // namespace

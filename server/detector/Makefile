@@ -3,11 +3,15 @@ CFLAGS = -std=c++11 -DDEBUG
 
 OPENCV_LIBS = $(shell for lib in $(OPENCV_PATH)/lib/*.so; do echo $$lib; done;)
 
-SRCS = detector.cpp feature_matcher.cpp edges.cpp geometry.cpp
+DETECTOR_SRCS = detector.cpp feature_matcher.cpp edges.cpp geometry.cpp util.cpp
+HASHER_SRCS = hasher.cpp util.cpp
 
 # TODO(sghiaus): Split the makefile into objects for incremental building.
 
-all: detector
+all: detector hasher
 
-detector: $(SRCS)
-	$(CC) $(CFLAGS) -I$(OPENCV_PATH)/include -I../.. -o detector $(SRCS) $(OPENCV_LIBS) -L$(OPENCV_PATH)/lib
+detector: $(DETECTOR_SRCS)
+	$(CC) $(CFLAGS) -I$(OPENCV_PATH)/include -I../.. -o detector $(DETECTOR_SRCS) $(OPENCV_LIBS) -L$(OPENCV_PATH)/lib
+
+hasher: $(HASHER_SRCS)
+	$(CC) $(CFLAGS) -I$(OPENCV_PATH)/include -I../.. -o hasher $(HASHER_SRCS) $(OPENCV_LIBS) -L$(OPENCV_PATH)/lib

@@ -12,6 +12,7 @@
 #include "server/detector/edges.h"
 #include "server/detector/feature_matcher.h"
 #include "server/detector/geometry.h"
+#include "server/detector/util.h"
 #include "third_party/rapidjson/document.h"
 #include "third_party/rapidjson/stringbuffer.h"
 #include "third_party/rapidjson/writer.h"
@@ -38,9 +39,6 @@ string debug_container_path;
 Mat ReadImage(const string& path, int& hit_x, int& hit_y);
 Mat ExtractPainting(const Mat& image, int x, int y);
 Mat ReadHue(const Mat& image);
-
-// TODO(sghiaus): Move this to some utils file.
-vector<string> GetAllFiles(const string& path);
 
 } // namespace
 
@@ -83,29 +81,16 @@ int main(int argc, const char** argv) {
 
     vector<string> files = GetAllFiles(database_path);
     for (size_t i = 0; i < files.size(); ++i) {
-        string file = files[i];
-        DIR* folder = opendir(file.c_str());
-        if (folder) {
-            // Check if it's a png.
-            string image_path;
-            ifstream png(file + "/image.png");
-            if (png) {
-                image_path = file + "/image.png";
-            } else {
-                ifstream jpeg(file + "/image.jpeg");
-                if (jpeg) {
-                    image_path = file + "/image.jpeg";
-                } else {
-                    cerr << "Missing image for " << file;
-                    return ERR_MISSING_TEMPLATE_IMAGE;
-                }
-            }
+        string image_path;
+        if (GetContainerImagePath(files[i], image_path)) {
             int score = ComputeFeatureMatchScore(gray_input_image, image_path);
             if (score > best_score) {
                 best_score = score;
                 best_index = i;
             }
-            closedir(folder);
+        } else {
+            cerr << "Missing image for " << files[i];
+            return ERR_MISSING_TEMPLATE_IMAGE;
         }
     }
 
@@ -184,23 +169,6 @@ Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
     }
 
     return painting;
-}
-
-vector<string> GetAllFiles(const string& path) {
-    vector<string> files;
-    DIR* dir = opendir(path.c_str());
-    if (dir) {
-        dirent* dirent = readdir(dir);
-        while (dirent != 0) {
-            string file = dirent->d_name;
-            if (file != "." && file != "..") {
-                files.push_back(path + "/" + dirent->d_name);
-            }
-            dirent = readdir(dir);
-        }
-        closedir(dir);
-    }
-    return files;
 }
 
 } // namespace

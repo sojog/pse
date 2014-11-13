@@ -35,7 +35,7 @@ def identify_painting(request):
     image_file.write(image.read())
     image_file.close()
 
-    database_path = "../detector/data"
+    database_path = "../freebase/data"
     abs_database_path = os.path.abspath(database_path)
     abs_container_path = os.path.abspath(request_temp_container) + "/"
     content = subprocess.check_output([DETECTOR_PATH, abs_container_path, abs_database_path, str(x), str(y)])

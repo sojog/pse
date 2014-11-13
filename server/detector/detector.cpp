@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cstdlib>
+#include <dirent.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -28,6 +29,7 @@ const int MAX_IMAGE_EDGE_PIXELS = 512;
 
 const int ERR_INVALID_ARGC = 1;
 const int ERR_FAILED_TO_OPEN_IMAGE = 2;
+const int ERR_MISSING_TEMPLATE_IMAGE = 3;
 
 #ifdef DEBUG
 string debug_container_path;
@@ -36,6 +38,9 @@ string debug_container_path;
 Mat ReadImage(const string& path, int& hit_x, int& hit_y);
 Mat ExtractPainting(const Mat& image, int x, int y);
 Mat ReadHue(const Mat& image);
+
+// TODO(sghiaus): Move this to some utils file.
+vector<string> GetAllFiles(const string& path);
 
 } // namespace
 
@@ -73,43 +78,55 @@ int main(int argc, const char** argv) {
     imwrite(debug_container_path + "hue.png", hue_input_image);
     // imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
 #endif
-    
-    // Read the json database.
-    fstream file_stream;
-    file_stream.open(database_path + "/data.json", fstream::in);
-    stringstream database;
-    database << file_stream.rdbuf();
-    file_stream.close();
-
-    Document document;
-    document.Parse(database.str().c_str());
 
     SizeType best_index = 0;
     int best_score = 0;
 
-    for (SizeType i = 0; i < document.Size(); ++i) {
-        Value& entry = document[i];
-        string template_path = database_path + "/" + entry["template"].GetString();
-        int score = ComputeFeatureMatchScore(gray_input_image, template_path);
-        if (score > best_score) {
-            best_score = score;
-            best_index = i;
+    vector<string> files = GetAllFiles(database_path);
+    for (size_t i = 0; i < files.size(); ++i) {
+        string file = files[i];
+        DIR* folder = opendir(file.c_str());
+        if (folder) {
+            // Check if it's a png.
+            string image_path;
+            ifstream png(file + "/image.png");
+            if (png) {
+                image_path = file + "/image.png";
+            } else {
+                ifstream jpeg(file + "/image.jpeg");
+                if (jpeg) {
+                    image_path = file + "/image.jpeg";
+                } else {
+                    cerr << "Missing image for " << file;
+                    return ERR_MISSING_TEMPLATE_IMAGE;
+                }
+            }
+            int score = ComputeFeatureMatchScore(gray_input_image, image_path);
+            if (score > best_score) {
+                best_score = score;
+                best_index = i;
+            }
+            closedir(folder);
         }
     }
 
     if (best_score > 0) {
-        Value& match = document[best_index];
+        fstream file_stream(files[best_index] + "/metadata.json", fstream::in);
+        stringstream raw_metadata;
+        raw_metadata << file_stream.rdbuf();
+        file_stream.close();
+        Document metadata;
+        metadata.Parse(raw_metadata.str().c_str());
 
         StringBuffer buffer;
         Writer<StringBuffer> writer(buffer);
-
         writer.StartObject();
         writer.String("name");
-        writer.String(match["name"].GetString());
+        writer.String(metadata["name"].GetString());
         writer.String("description");
-        writer.String(match["description"].GetString());
-        writer.String("image");
-        writer.String(match["image"].GetString());
+        writer.String(metadata["description"].GetString());
+        // TODO(sghiaus): Add the image URL. Should it be the original freebase URL
+        // or should it be hosted on our server?
         writer.EndObject();
 
         cout << buffer.GetString();
@@ -168,6 +185,23 @@ Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
     }
 
     return painting;
+}
+
+vector<string> GetAllFiles(const string& path) {
+    vector<string> files;
+    DIR* dir = opendir(path.c_str());
+    if (dir) {
+        dirent* dirent = readdir(dir);
+        while (dirent != 0) {
+            string file = dirent->d_name;
+            if (file != "." && file != "..") {
+                files.push_back(path + "/" + dirent->d_name);
+            }
+            dirent = readdir(dir);
+        }
+        closedir(dir);
+    }
+    return files;
 }
 
 } // namespace

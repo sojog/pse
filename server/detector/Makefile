@@ -5,6 +5,8 @@ OPENCV_LIBS = $(shell for lib in $(OPENCV_PATH)/lib/*.so; do echo $$lib; done;)
 
 SRCS = detector.cpp feature_matcher.cpp edges.cpp geometry.cpp
 
+# TODO(sghiaus): Split the makefile into objects for incremental building.
+
 all: detector
 
 detector: $(SRCS)

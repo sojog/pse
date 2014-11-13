@@ -10,8 +10,8 @@ class SimpleTest(TestCase):
         starry_night = open("detection_app/testdata/StarryNightPhoto.png", "rb")
         response = self.client.post('/identify_painting/', {
             'image': starry_night,
-            'x': '726',
-            'y': '439',
+            'x': '0',
+            'y': '0',
         })
         self.assertEqual(200, response.status_code)        
 

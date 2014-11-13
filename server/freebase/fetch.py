@@ -44,7 +44,6 @@ while remaining_requests > 0:
     url = SERVICE_URL + '?' + urllib.urlencode(params)
     batch_response = json.loads(urllib.urlopen(url).read())
 
-    print(len(batch_response['result']))
     for result in batch_response['result']:
         mid = result['mid']
         try:

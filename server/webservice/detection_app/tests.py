@@ -17,6 +17,6 @@ class SimpleTest(TestCase):
         })
         self.assertEqual(200, response.status_code)
 
-        response_json = json.loads(response)
-        self.assertEqual('The Starry Night', response['name'])
+        response_json = json.loads(response.content)
+        self.assertEqual(u'The Starry Night', response_json['name'])
 

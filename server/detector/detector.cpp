@@ -67,12 +67,11 @@ int main(int argc, const char** argv) {
     cvtColor(input_image, gray_input_image, CV_BGR2GRAY);
     Mat hue_input_image = ReadHue(input_image);
 
+#ifdef DEBUG
     // Process the input image to only keep the painting quadrilateral and transform
     // it to a rectangle.
     // TODO(sghiaus): Once the function is ready, use this image for feature extraction.
     Mat gray_painting_image = ExtractPainting(gray_input_image, hit_x, hit_y);
-
-#ifdef DEBUG
     imwrite(debug_container_path + "scaled.png", input_image);
     imwrite(debug_container_path + "gray_scaled.png", gray_input_image);
     imwrite(debug_container_path + "hue.png", hue_input_image);

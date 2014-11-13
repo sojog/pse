@@ -1,3 +1,5 @@
+import json
+
 from django.test import TestCase
 from django.test.client import Client
 
@@ -13,7 +15,8 @@ class SimpleTest(TestCase):
             'x': '0',
             'y': '0',
         })
-        self.assertEqual(200, response.status_code)        
+        self.assertEqual(200, response.status_code)
 
-        # TODO(sghiaus): Also verify the result content.
+        response_json = json.loads(response)
+        self.assertEqual('The Starry Night', response['name'])
 

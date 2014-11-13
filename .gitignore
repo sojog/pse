@@ -9,4 +9,6 @@ build/
 DerivedData/
 xcuserdata
 server/detector/detector
+server/freebase/data/
+server/freebase/key
 server/webservice/detection_app/temp

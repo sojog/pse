@@ -27,22 +27,12 @@ bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y,
                                       Quad2f& painging_quad) {
     Mat resized = RescaleImage(image, 512);
 
-    IplImage* ipl_normalized = new IplImage(resized);
-
-    cvEqualizeHist(ipl_normalized, ipl_normalized);
-    Mat normalized(ipl_normalized);
-
     Mat blurred;
-    GaussianBlur(normalized, blurred, Size(GAUSS_KERNEL, GAUSS_KERNEL),
+    GaussianBlur(resized, blurred, Size(GAUSS_KERNEL, GAUSS_KERNEL),
                  GAUSS_SIGMA, GAUSS_SIGMA);
 
-    Scalar mean_scalar = mean(blurred);
-    double mean_value = mean_scalar.val[0];
-    double canny_min_thresh = 0.5 * mean_value;
-    double canny_max_thresh = mean_value;
-
     Mat canny_edges;
-    Canny(blurred, canny_edges, canny_min_thresh, canny_max_thresh);
+    Canny(blurred, canny_edges, 20, 60);
 
     vector<Vec2f> hough_lines;
     HoughLines(canny_edges, hough_lines, 1, CV_PI/180, 100, 0, 0);
@@ -73,7 +63,6 @@ bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y,
 
     // Output debug info for intermediary steps.
     if (!debug_container_path.empty()) {
-        imwrite(debug_container_path + "normalized.png", normalized);
         imwrite(debug_container_path + "blurred.png", blurred);
         imwrite(debug_container_path + "canny.png", canny_edges);
         Scalar color(0, 200, 0);

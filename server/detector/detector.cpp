@@ -143,7 +143,8 @@ Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
     }
 
     // TODO(sghiaus): Return a proper result.
-    return gray_image;
+    Mat resized = RescaleImage(gray_image, 512);
+    return resized;
 }
 
 } // namespace

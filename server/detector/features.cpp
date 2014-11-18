@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/features2d/features2d.hpp"
@@ -34,13 +33,31 @@ double ComputeFeatureDistance(const Mat& input_image,
     extractor.compute(template_image, template_kps, template_des);
 
     // Perform matching.
-    FlannBasedMatcher matcher;
+    BFMatcher matcher(NORM_L2, true);
     vector<DMatch> matches;
-    matcher.match(template_des, input_des, matches);
+    matcher.match(input_des, template_des, matches);
+
+    vector<DMatch> good_matches;
+    for (const DMatch& match : matches) {
+        // TODO(sghiaus): Need a better way than a hard coded threhsold.
+        if (match.distance < 0.22) {
+            good_matches.push_back(match);
+        }
+    }
+
+    // TODO(sghiaus): Need to find a homography for these points.
+
+#ifdef DEBUG
+    Mat matches_image;
+    drawMatches(input_image, input_kps, template_image, template_kps,
+                good_matches, matches_image);
+
+    imwrite(template_path + ".matches.png", matches_image);
+#endif
 
     double total_distance = 0;
     for (int i = 0; i < template_des.rows; ++i) {
-        total_distance += matches[i].distance;
+        total_distance += good_matches[i].distance;
     }
 
     return total_distance;

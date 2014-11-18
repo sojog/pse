@@ -35,7 +35,7 @@ bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y,
     Canny(blurred, canny_edges, 20, 60);
 
     vector<Vec2f> hough_lines;
-    HoughLines(canny_edges, hough_lines, 1, CV_PI/180, 100, 0, 0);
+    HoughLines(canny_edges, hough_lines, 1, CV_PI/180, 90);
 
     vector<Vec4i> hough_p_lines;
     HoughLinesP(canny_edges, hough_p_lines, 1, CV_PI / 180, 90, 10, 40);

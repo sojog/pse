@@ -1,8 +1,10 @@
 #include "server/detector/util.h"
 
+#include <algorithm>
 #include <dirent.h>
 #include <fstream>
 
+using namespace cv;
 using namespace std;
 
 namespace detector {
@@ -44,6 +46,17 @@ bool GetContainerImagePath(const std::string& container_path, std::string& image
     }
     closedir(folder);
     return success;
+}
+
+Mat RescaleImage(const Mat& raw_image, int max_edge_pixels) {
+    Size raw_image_size = raw_image.size();
+    auto max_edge = max(raw_image_size.width, raw_image_size.height);
+    float scale_ratio = max_edge_pixels / (float) max_edge;
+    Size final_size(raw_image_size.width * scale_ratio,
+                    raw_image_size.height * scale_ratio);
+    Mat scaled_image;
+    resize(raw_image, scaled_image, final_size);
+    return scaled_image;
 }
 
 }  // namespace detector

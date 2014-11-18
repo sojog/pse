@@ -19,6 +19,9 @@ namespace detector {
 
 double ComputeFeatureDistance(const Mat& input_image,
                               const string& template_path) {
+    // FIXME(sghiaus): Remove this.
+    return 0;
+
     Mat template_image = imread(template_path, CV_LOAD_IMAGE_GRAYSCALE);
 
     // Detect keypoints.

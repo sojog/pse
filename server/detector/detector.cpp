@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <cassert>
 #include <cstdlib>
 #include <dirent.h>
@@ -36,9 +35,8 @@ const int ERR_MISSING_TEMPLATE_IMAGE = 3;
 string debug_container_path;
 #endif
 
-Mat ReadImage(const string& path, int& hit_x, int& hit_y);
+Mat ReadImage(const string& path);
 Mat ExtractPainting(const Mat& image, int x, int y);
-Mat ReadHue(const Mat& image);
 
 } // namespace
 
@@ -51,6 +49,7 @@ int main(int argc, const char** argv) {
     }
     string container_path = argv[1];
     string database_path = argv[2];
+    // TODO(sghiaus): Scale hit x and y before using them.
     int hit_x = stoi(argv[3]);
     int hit_y = stoi(argv[4]);
     string input_image_path = container_path + "image.png";
@@ -60,20 +59,12 @@ int main(int argc, const char** argv) {
 #endif
 
     // Read the input image.
-    Mat input_image = ReadImage(input_image_path, hit_x, hit_y);
-    Mat gray_input_image;
-    cvtColor(input_image, gray_input_image, CV_BGR2GRAY);
-    Mat hue_input_image = ReadHue(input_image);
+    Mat input_image = ReadImage(input_image_path);
+
+    Mat painting_image = ExtractPainting(input_image, hit_x, hit_y);
 
 #ifdef DEBUG
-    // Process the input image to only keep the painting quadrilateral and transform
-    // it to a rectangle.
-    // TODO(sghiaus): Once the function is ready, use this image for feature extraction.
-    Mat gray_painting_image = ExtractPainting(gray_input_image, hit_x, hit_y);
-    imwrite(debug_container_path + "scaled.png", input_image);
-    imwrite(debug_container_path + "gray_scaled.png", gray_input_image);
-    imwrite(debug_container_path + "hue.png", hue_input_image);
-    // imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
+    imwrite(debug_container_path + "painting.png", painting_image);
 #endif
 
     vector<string> files = GetAllFiles(database_path);
@@ -83,7 +74,7 @@ int main(int argc, const char** argv) {
     for (size_t i = 0; i < files.size(); ++i) {
         string image_path;
         if (GetContainerImagePath(files[i], image_path)) {
-            double distance = ComputeFeatureDistance(gray_input_image, image_path);
+            double distance = ComputeFeatureDistance(painting_image, image_path);
             if (distance < closest_distance || i == 0) {
                 closest_distance = distance;
                 best_index = i;
@@ -122,54 +113,37 @@ int main(int argc, const char** argv) {
 
 namespace {
 
-Mat ReadImage(const string& path, int& hit_x, int& hit_y) {
-    Mat raw_image = imread(path);
-    if (raw_image.data) {
-        Size raw_image_size = raw_image.size();
-        auto max_edge = max(raw_image_size.width, raw_image_size.height);
-        if (max_edge > MAX_IMAGE_EDGE_PIXELS) {
-            float scale_ratio = MAX_IMAGE_EDGE_PIXELS / (float) max_edge;
-            Size final_size(raw_image_size.width * scale_ratio,
-                            raw_image_size.height * scale_ratio);
-            hit_x *= scale_ratio;
-            hit_y *= scale_ratio;
-            Mat scaled_image;
-            resize(raw_image, scaled_image, final_size);
-            return scaled_image;
-        }
-    } else {
+Mat ReadImage(const string& path) {
+    Mat image = imread(path);
+    if (!image.data) {
         cerr << "Error loading image: " << path << "\n";
         exit(ERR_FAILED_TO_OPEN_IMAGE);
     }
-    return raw_image;
-}
-
-Mat ReadHue(const Mat& image) {
-    Mat hue;
-    vector<Mat> channels;
-    Mat hsv;
-    cvtColor(image, hsv, CV_RGB2HSV);
-    split(hsv, channels);
-    hue = channels[0];
-    return hue;
+    return image;
 }
 
 Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
-    Mat painting;
-
 #ifndef DEBUG
     EdgeDetector edge_detector;
 #else
     EdgeDetector edge_detector(debug_container_path);
 #endif
 
+    Mat gray_image;
+    cvtColor(image, gray_image, CV_BGR2GRAY);
+
+#ifdef DEBUG
+    imwrite(debug_container_path + "grayscale.png", gray_image);
+#endif
+
     Quad2f painting_quad;
-    if (edge_detector.DetectPaintingQuad(image, hit_x, hit_y, painting_quad)) {
+    if (edge_detector.DetectPaintingQuad(gray_image, hit_x, hit_y, painting_quad)) {
         // TODO(sghiaus): Apply perspective transform on the rect and compare the result
         // with the known templates.
     }
 
-    return painting;
+    // TODO(sghiaus): Return a proper result.
+    return gray_image;
 }
 
 } // namespace

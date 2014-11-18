@@ -56,7 +56,7 @@ double ComputeFeatureDistance(const Mat& input_image,
 #endif
 
     double total_distance = 0;
-    for (int i = 0; i < template_des.rows; ++i) {
+    for (int i = 0; i < good_matches.size(); ++i) {
         total_distance += good_matches[i].distance;
     }
 

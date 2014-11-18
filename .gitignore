@@ -10,6 +10,7 @@ DerivedData/
 xcuserdata
 server/.cproject
 server/.project
+server/.pydevproject
 server/.settings
 server/detector/detector
 server/detector/hasher

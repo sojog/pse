@@ -8,6 +8,9 @@
 build/
 DerivedData/
 xcuserdata
+server/.cproject
+server/.project
+server/.settings
 server/detector/detector
 server/detector/hasher
 server/freebase/data/

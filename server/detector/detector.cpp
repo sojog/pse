@@ -10,7 +10,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "server/detector/edges.h"
-#include "server/detector/feature_matcher.h"
+#include "server/detector/features.h"
 #include "server/detector/geometry.h"
 #include "server/detector/util.h"
 #include "third_party/rapidjson/document.h"
@@ -76,16 +76,16 @@ int main(int argc, const char** argv) {
     // imwrite(debug_container_path + "gray_painting.png", gray_painting_image);
 #endif
 
-    SizeType best_index = 0;
-    int best_score = 0;
-
     vector<string> files = GetAllFiles(database_path);
+    SizeType best_index = files.size();
+    double closest_distance = 0;
+
     for (size_t i = 0; i < files.size(); ++i) {
         string image_path;
         if (GetContainerImagePath(files[i], image_path)) {
-            int score = ComputeFeatureMatchScore(gray_input_image, image_path);
-            if (score > best_score) {
-                best_score = score;
+            double distance = ComputeFeatureDistance(gray_input_image, image_path);
+            if (distance < closest_distance || i == 0) {
+                closest_distance = distance;
                 best_index = i;
             }
         } else {
@@ -94,7 +94,8 @@ int main(int argc, const char** argv) {
         }
     }
 
-    if (best_score > 0) {
+    // TODO(sghiaus): A minimum threshold should be set.
+    if (best_index < files.size()) {
         fstream file_stream(files[best_index] + "/metadata.json", fstream::in);
         stringstream raw_metadata;
         raw_metadata << file_stream.rdbuf();

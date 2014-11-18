@@ -6,7 +6,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/nonfree/features2d.hpp"
-#include "server/detector/feature_matcher.h"
+#include "server/detector/features.h"
 
 using namespace cv;
 using namespace std;
@@ -17,8 +17,8 @@ int SURF_MIN_HESSIAN = 400;
 
 namespace detector {
 
-int ComputeFeatureMatchScore(const Mat& input_image,
-                             const string& template_path) {
+double ComputeFeatureDistance(const Mat& input_image,
+                              const string& template_path) {
     Mat template_image = imread(template_path, CV_LOAD_IMAGE_GRAYSCALE);
 
     // Detect keypoints.
@@ -38,25 +38,12 @@ int ComputeFeatureMatchScore(const Mat& input_image,
     vector<DMatch> matches;
     matcher.match(template_des, input_des, matches);
 
-    // Keep only "good matches".
-    vector<DMatch> good_matches;
-
-    double max_dist = 0;
-    double min_dist = 100;
-
+    double total_distance = 0;
     for (int i = 0; i < template_des.rows; ++i) {
-        double dist = matches[i].distance;
-        if (dist < min_dist) min_dist = dist;
-        if (dist > max_dist) max_dist = dist;
+        total_distance += matches[i].distance;
     }
 
-    for (int i = 0; i < template_des.rows; ++i) {
-        if (matches[i].distance < 3 * min_dist) {
-            good_matches.push_back(matches[i]);
-        }
-    }
-
-    return good_matches.size();
+    return total_distance;
 }
 
 }  // namespace detector

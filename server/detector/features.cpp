@@ -16,6 +16,8 @@ int SURF_MIN_HESSIAN = 400;
 
 namespace detector {
 
+// TODO(sghiaus): Rename this to ComputeSimilarity to reflect that the number of
+// matches is also taken into account and not just the distance.
 double ComputeFeatureDistance(const Mat& input_image,
                               const string& template_path) {
     Mat template_image = imread(template_path, CV_LOAD_IMAGE_GRAYSCALE);
@@ -55,12 +57,19 @@ double ComputeFeatureDistance(const Mat& input_image,
     imwrite(template_path + ".matches.png", matches_image);
 #endif
 
-    double total_distance = 0;
-    for (int i = 0; i < good_matches.size(); ++i) {
-        total_distance += good_matches[i].distance;
+    double normalized_distance = -1;
+
+    if (good_matches.size() > 0) {
+        double total_distance = 0;
+        for (int i = 0; i < good_matches.size(); ++i) {
+            total_distance += good_matches[i].distance;
+        }
+        // TODO(sghiaus): The more features matched, the higher the score should be,
+        // rather than just normalizing the distance.
+        normalized_distance = total_distance / good_matches.size();
     }
 
-    return total_distance;
+    return normalized_distance;
 }
 
 }  // namespace detector

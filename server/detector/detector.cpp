@@ -75,9 +75,11 @@ int main(int argc, const char** argv) {
         string image_path;
         if (GetContainerImagePath(files[i], image_path)) {
             double distance = ComputeFeatureDistance(painting_image, image_path);
-            if (distance < closest_distance || i == 0) {
-                closest_distance = distance;
-                best_index = i;
+            if (distance >= 0) {
+                if (distance < closest_distance || best_index == files.size()) {
+                    closest_distance = distance;
+                    best_index = i;
+                }
             }
         } else {
             cerr << "Missing image for " << files[i];

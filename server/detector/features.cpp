@@ -10,10 +10,6 @@
 using namespace cv;
 using namespace std;
 
-namespace {
-int SURF_MIN_HESSIAN = 400;
-}  // namespace
-
 namespace detector {
 
 // TODO(sghiaus): Rename this to ComputeSimilarity to reflect that the number of
@@ -23,7 +19,7 @@ double ComputeFeatureDistance(const Mat& input_image,
     Mat template_image = imread(template_path, CV_LOAD_IMAGE_GRAYSCALE);
 
     // Detect keypoints.
-    SurfFeatureDetector detector(SURF_MIN_HESSIAN);
+    SurfFeatureDetector detector(400);
     vector<KeyPoint> input_kps, template_kps;
     detector.detect(input_image, input_kps);
     detector.detect(template_image, template_kps);

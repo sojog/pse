@@ -25,6 +25,8 @@ EdgeDetector::EdgeDetector(const std::string& debug_container_path) {
 // Assuming the image is grayscale at this point.
 bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y, 
                                       Quad2f& painging_quad) {
+    // TODO(sghiaus): Attempt find contours. Does it automatically split the image
+    // into a rectangle?
     Mat resized = RescaleImage(image, 512);
 
     Mat blurred;
@@ -59,7 +61,6 @@ bool EdgeDetector::DetectPaintingQuad(const Mat& image, int hit_x, int hit_y,
     // TODO(sghiaus): Cut everything that's outside of the painting rectangle.
 
     // TODO(sghiaus): Rescale the final output image.
-
 
     // Output debug info for intermediary steps.
     if (!debug_container_path.empty()) {

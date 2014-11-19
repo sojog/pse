@@ -9,7 +9,7 @@ using namespace std;
 
 namespace detector {
 
-vector<string> GetAllFiles(const string& path) {
+vector<string> GetAbsoluteFilesIn(const string& path) {
     vector<string> files;
     DIR* dir = opendir(path.c_str());
     if (dir) {

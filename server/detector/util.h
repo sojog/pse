@@ -8,7 +8,7 @@
 
 namespace detector {
 
-std::vector<std::string> GetAllFiles(const std::string& path);
+std::vector<std::string> GetAbsoluteFilesIn(const std::string& path);
 
 bool GetContainerImagePath(const std::string& container_path, std::string& image_path);
 

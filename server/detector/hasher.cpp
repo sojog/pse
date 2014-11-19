@@ -7,7 +7,7 @@ using namespace detector;
 using namespace std;
 
 int main(int argc, const char** argv) {
-    vector<string> files = GetAllFiles("../freebase/data");
+    vector<string> files = GetAbsoluteFilesIn("../freebase/data");
     for (const string& container_path : files) {
         string image_path;
         if (GetContainerImagePath(container_path, image_path)) {

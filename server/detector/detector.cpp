@@ -58,7 +58,6 @@ int main(int argc, const char** argv) {
     debug_container_path = container_path;
 #endif
 
-    // Read the input image.
     Mat input_image = ReadImage(input_image_path);
 
     Mat painting_image = ExtractPainting(input_image, hit_x, hit_y);
@@ -67,7 +66,7 @@ int main(int argc, const char** argv) {
     imwrite(debug_container_path + "painting.png", painting_image);
 #endif
 
-    vector<string> files = GetAllFiles(database_path);
+    vector<string> files = GetAbsoluteFilesIn(database_path);
     SizeType best_index = files.size();
     double closest_distance = 0;
 
@@ -144,8 +143,9 @@ Mat ExtractPainting(const Mat& image, int hit_x, int hit_y) {
         // with the known templates.
     }
 
-    // TODO(sghiaus): Return a proper result.
+    // TODO(sghiaus): Return the painting warped image instead of the gray input image.
     Mat resized = RescaleImage(gray_image, 512);
+
     return resized;
 }
 

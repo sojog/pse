@@ -14,6 +14,8 @@ bool GetContainerImagePath(const std::string& container_path, std::string& image
 
 cv::Mat RescaleImage(const cv::Mat& raw_image, int max_edge_pixels);
 
+void EqualizeHistogram(cv::Mat& image);
+
 }  // namespace detector
 
 #endif  // SERVER_DETECTOR_UTIL_H_

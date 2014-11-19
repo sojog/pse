@@ -59,4 +59,9 @@ Mat RescaleImage(const Mat& raw_image, int max_edge_pixels) {
     return scaled_image;
 }
 
+void EqualizeHistogram(Mat& image) {
+    IplImage ipl_image(image);
+    cvEqualizeHist(&ipl_image, &ipl_image);
+}
+
 }  // namespace detector

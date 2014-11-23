@@ -80,9 +80,6 @@ int main(int argc, const char** argv) {
                     best_index = i;
                 }
             }
-        } else {
-            cerr << "Missing image for " << files[i];
-            return ERR_MISSING_TEMPLATE_IMAGE;
         }
     }
 

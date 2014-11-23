@@ -65,7 +65,7 @@ void SaveHistogram(const Mat& image, const string& save_path) {
     Mat plot(height, width, CV_8UC3, Scalar(0, 0, 0));
 
     Mat normalized_for_plot;
-    normalize(histogram, normalized_for_plot, 0, plot.rows, NORM_MINMAX, -1, Mat());
+    normalize(histogram, normalized_for_plot, 0, plot.rows, NORM_MINMAX);
 
     for (int i = 1; i < hist_size; ++i) {
         line(plot,
